@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { signIn, useSession, signOut } from 'next-auth/react'
+import Cookies from 'js-cookie';
 
 export const FloatingNav = ({
   navItems,
@@ -24,6 +25,7 @@ export const FloatingNav = ({
   const { scrollYProgress } = useScroll();
 
   const [visible, setVisible] = useState(true);
+  const [token, setToken] = useState("");
   const { data: session, status } = useSession();
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
@@ -41,6 +43,15 @@ export const FloatingNav = ({
       }
     }
   });
+
+  const handleProfileClick = () => {
+    if (session) {
+      // Retrieve the token from the session object
+      // @ts-ignore
+      const userToken = session.user.token;
+      setToken(userToken ? JSON.stringify(userToken) : "No token found");
+    }
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -77,30 +88,31 @@ export const FloatingNav = ({
         {session ? (
           <div className="flex gap-2">
             <button
-            onClick={() => signOut()}
-            className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
-          >
-            <span>Profile</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-          </button>
+              onClick={handleProfileClick}
+              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
+            >
+              <span>Profile</span>
+              {token}
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+            </button>
 
-          <button
-            onClick={() => signOut()}
-            className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
-          >
-            <span>Logout</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-          </button>
+            <button
+              onClick={() => signOut()}
+              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
+            >
+              <span>Logout</span>
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+            </button>
           </div>
         ) : (
           <div>
-          <button
-            onClick={() => signIn()}
-            className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
-          >
-            <span>Login</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-          </button>
+            <button
+              onClick={() => signIn()}
+              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
+            >
+              <span>Login</span>
+              <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
+            </button>
           </div>
         )}
       </motion.div>

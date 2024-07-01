@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from "bcryptjs"; 
+import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
 const authOptions = {
@@ -43,18 +43,19 @@ const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     jwt: async ({ user, token }: any) => {
-    if (user) {
+      if (user) {
         token.uid = user.id;
-    }
-    return token;
-    },
-  session: ({ session, token, user }: any) => {
-      if (session.user) {
-          session.user.id = token.uid
       }
-      return session
-  }
-},
+      return token;
+    },
+    session: ({ session, token }: any) => {
+      if (session.user) {
+        session.user.id = token.uid;
+        session.user.token = token;
+      }
+      return session;
+    },
+  },
 };
 //@ts-ignore
 const handler = (req: NextRequest, res: NextResponse) => NextAuth(req, res, authOptions);

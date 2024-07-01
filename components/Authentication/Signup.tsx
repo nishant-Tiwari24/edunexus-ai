@@ -6,8 +6,10 @@ import LabelledInput from './LabelledInput';
 import { FloatingNav } from '../ui/FloatingNavbar';
 import { navItems } from '@/data';
 import Footer from '../landing-page/Footer';
+import { useSession } from 'next-auth/react';
 
 const SignupPage: React.FC = () => {
+  const session = useSession();
   const [formvalues, setFormvalues] = useState({
     email: '',
     password: ''
