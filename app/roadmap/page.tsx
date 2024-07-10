@@ -1,23 +1,38 @@
-import RoadmapForm from '@/components/Roadmap/RoadmapForm'
-import React from 'react'
-import History from '@/components/Roadmap/History'
 
-const page = () => {
+import React from 'react';
+import RoadmapForm from '@/components/Roadmap/RoadmapForm';
+import History from '@/components/Roadmap/History';
+import { FloatingNav } from '@/components/ui/FloatingNavbar';
+import { navItems } from '@/data';
+import Footer from '@/components/landing-page/Footer';
+
+const HomePage: React.FC = () => {
   return (
-    <div>
-      <div className="container mx-auto p-4">
-<h1 className="text-2xl font-bold mb-4">AI Roadmap Generator</h1>
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-  <div>
-    <RoadmapForm />
-  </div>
-  <div>
-    <History />
-  </div>
-</div>
-</div>
+    <>
+    <FloatingNav navItems={navItems} />
+    <div 
+  className="bg-black min-h-screen text-white py-36 bg-cover bg-center" 
+  style={{ backgroundImage: 'url(assets/footer-grid.svg)' }}
+>
+  <div className="max-w-7xl h-full mx-auto">
+    <header className="flex justify-center items-center mb-8">
+      <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-300">
+        AI Roadmap <span className='text-white-100'>Generator</span>
+      </h1>
+    </header>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <RoadmapForm />
+      </div>
+      <History />
     </div>
-  )
-}
+    <Footer/>
+  </div>
+</div>
+    
+    </>
+  );
+};
 
-export default page
+export default HomePage;
+

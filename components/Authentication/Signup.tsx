@@ -40,9 +40,9 @@ const SignupPage: React.FC = () => {
   return (
     <div>
       <FloatingNav navItems={navItems} />
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0E093A] to-[#1D1450] text-purple-300 p-10 relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0E093A] to-[#1D1450] text-purple2-300 p-10 relative">
       <img src="/landing-page/bg2.webp" alt="Background" className="absolute inset-0 w-full h-full object-cover z-0" />
-      <div className="relative z-10 w-full max-w-md p-8 bg-gradient-to-r from-purple-800 to-zinc-800 shadow-lg rounded-lg border border-gray-700">
+      <div className="relative z-10 w-full max-w-md p-8 bg-gradient-to-r from-purple2-800 to-zinc-800 shadow-lg rounded-lg border border-gray-700">
         <h2 className="text-3xl font-semibold text-white mb-6 text-center">Create a new account</h2>
         <p className="text-center text-gray-400 mb-6">Welcome back! Please enter your details.</p>
         <form onSubmit={handleSubmit}>
