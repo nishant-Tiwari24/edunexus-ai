@@ -11,7 +11,6 @@ const History: React.FC = () => {
   useEffect(() => {
     const fetchResponses = async () => {
       try {
-        toast.loading('Loading responses...');
         const response = await axios.get('/api/responses');
         setResponses(response.data);
         toast.success('Responses loaded successfully!');

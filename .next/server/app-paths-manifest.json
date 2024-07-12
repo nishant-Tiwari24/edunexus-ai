@@ -1,1 +1,8 @@
-{}
+{
+  "/not-found": "app/not-found.js",
+  "/page": "app/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/roadmap/page": "app/roadmap/page.js",
+  "/api/responses/route": "app/api/responses/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+}
