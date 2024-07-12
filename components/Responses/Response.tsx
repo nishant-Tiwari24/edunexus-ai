@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Loading from './Loading';
 import Error from './Error';
 import RoadmapBox from './RoadmapBox';
+import { renderTitle } from './RenderTitle';
 
 interface ChatGptResponse {
   id: number;
@@ -51,11 +52,12 @@ const RoadmapPage: React.FC = () => {
     });
   };
 
+
   return (
     <div className="bg-black p-36 border-zinc-600">
       <h2 className=" text-xl text-center text-gray-500 font-medium mb-2">Roadmap Details</h2>
       <div className="p-3 rounded-md text-zinc-200 relative overflow-hidden">
-        {response && <p className="text-3xl font-bold text-center mb-4">{response.title}</p>}
+        {response && <p className="text-3xl font-bold text-center mb-4">{response && renderTitle(response.title)}</p>}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {response && renderContent(response.content)}
         </div>

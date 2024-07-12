@@ -9,7 +9,7 @@ interface RoadmapBoxProps {
 
 const RoadmapBox: React.FC<RoadmapBoxProps> = ({ keyText, valueText, isLast, isThird }) => {
   return (
-    <div className="relative flex flex-col items-center p-10 m-2 rounded-3xl border-[2px] border-zinc-600 text-center bg-gradient-to-r from-zinc-700 via-zinc-800 to-black text-white shadow-lg">
+    <div className="relative flex flex-col items-center p-10 m-2 rounded-3xl border-[2px] border-zinc-600 text-center bg-gradient-to-r from-zinc-800 to-black-100 text-white shadow-2xl hover:border-zinc-700 cursor-pointer">
       <p className="font-medium text-lg text-gray-400">{keyText}</p>
       <p>{valueText}</p>
       {!isLast && (
