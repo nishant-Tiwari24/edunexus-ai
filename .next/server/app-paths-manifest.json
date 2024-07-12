@@ -1,6 +1,1 @@
-{
-  "/not-found": "app/not-found.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/responses/route": "app/api/responses/route.js",
-  "/roadmap/page": "app/roadmap/page.js"
-}
+{}
