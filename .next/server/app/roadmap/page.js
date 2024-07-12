@@ -89,6 +89,138 @@ module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js
 
 /***/ }),
 
+/***/ "assert":
+/*!*************************!*\
+  !*** external "assert" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("assert");
+
+/***/ }),
+
+/***/ "events":
+/*!*************************!*\
+  !*** external "events" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("events");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ "os":
+/*!*********************!*\
+  !*** external "os" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("os");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "tty":
+/*!**********************!*\
+  !*** external "tty" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tty");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "util":
+/*!***********************!*\
+  !*** external "util" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("util");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
+
+/***/ }),
+
 /***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Froadmap%2Fpage&page=%2Froadmap%2Fpage&appPaths=%2Froadmap%2Fpage&pagePath=private-next-app-dir%2Froadmap%2Fpage.tsx&appDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Froadmap%2Fpage&page=%2Froadmap%2Fpage&appPaths=%2Froadmap%2Fpage&pagePath=private-next-app-dir%2Froadmap%2Fpage.tsx&appDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
@@ -110,13 +242,13 @@ eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__web
 
 /***/ }),
 
-/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FRoadmapForm.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2Fui%2FFloatingNavbar.tsx&server=true!":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FRoadmapForm.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2Fui%2FFloatingNavbar.tsx&server=true! ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FHistory.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FRoadmapForm.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2Fui%2FFloatingNavbar.tsx&server=true!":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FHistory.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FRoadmapForm.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2Fui%2FFloatingNavbar.tsx&server=true! ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/Roadmap/RoadmapForm.tsx */ \"(ssr)/./components/Roadmap/RoadmapForm.tsx\"));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/ui/FloatingNavbar.tsx */ \"(ssr)/./components/ui/FloatingNavbar.tsx\"))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTJGVXNlcnMlMkZuaXNoYW50dGl3YXJpJTJGcHJvamVjdHMlMkZlZHVuZXh1c2FpJTJGY29tcG9uZW50cyUyRlJvYWRtYXAlMkZSb2FkbWFwRm9ybS50c3gmbW9kdWxlcz0lMkZVc2VycyUyRm5pc2hhbnR0aXdhcmklMkZwcm9qZWN0cyUyRmVkdW5leHVzYWklMkZjb21wb25lbnRzJTJGdWklMkZGbG9hdGluZ05hdmJhci50c3gmc2VydmVyPXRydWUhIiwibWFwcGluZ3MiOiJBQUFBLG9MQUFnSDtBQUNoSCIsInNvdXJjZXMiOlsid2VicGFjazovL3BvcnRmb2xpby8/ZjY3OCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIi9Vc2Vycy9uaXNoYW50dGl3YXJpL3Byb2plY3RzL2VkdW5leHVzYWkvY29tcG9uZW50cy9Sb2FkbWFwL1JvYWRtYXBGb3JtLnRzeFwiKTtcbmltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL25pc2hhbnR0aXdhcmkvcHJvamVjdHMvZWR1bmV4dXNhaS9jb21wb25lbnRzL3VpL0Zsb2F0aW5nTmF2YmFyLnRzeFwiKSJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FRoadmapForm.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2Fui%2FFloatingNavbar.tsx&server=true!\n");
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/Roadmap/History.tsx */ \"(ssr)/./components/Roadmap/History.tsx\"));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/Roadmap/RoadmapForm.tsx */ \"(ssr)/./components/Roadmap/RoadmapForm.tsx\"));\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./components/ui/FloatingNavbar.tsx */ \"(ssr)/./components/ui/FloatingNavbar.tsx\"))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTJGVXNlcnMlMkZuaXNoYW50dGl3YXJpJTJGcHJvamVjdHMlMkZlZHVuZXh1c2FpJTJGY29tcG9uZW50cyUyRlJvYWRtYXAlMkZIaXN0b3J5LnRzeCZtb2R1bGVzPSUyRlVzZXJzJTJGbmlzaGFudHRpd2FyaSUyRnByb2plY3RzJTJGZWR1bmV4dXNhaSUyRmNvbXBvbmVudHMlMkZSb2FkbWFwJTJGUm9hZG1hcEZvcm0udHN4Jm1vZHVsZXM9JTJGVXNlcnMlMkZuaXNoYW50dGl3YXJpJTJGcHJvamVjdHMlMkZlZHVuZXh1c2FpJTJGY29tcG9uZW50cyUyRnVpJTJGRmxvYXRpbmdOYXZiYXIudHN4JnNlcnZlcj10cnVlISIsIm1hcHBpbmdzIjoiQUFBQSw0S0FBNEc7QUFDNUcsb0xBQWdIO0FBQ2hIIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcG9ydGZvbGlvLz8xNDk1Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL25pc2hhbnR0aXdhcmkvcHJvamVjdHMvZWR1bmV4dXNhaS9jb21wb25lbnRzL1JvYWRtYXAvSGlzdG9yeS50c3hcIik7XG5pbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIi9Vc2Vycy9uaXNoYW50dGl3YXJpL3Byb2plY3RzL2VkdW5leHVzYWkvY29tcG9uZW50cy9Sb2FkbWFwL1JvYWRtYXBGb3JtLnRzeFwiKTtcbmltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL25pc2hhbnR0aXdhcmkvcHJvamVjdHMvZWR1bmV4dXNhaS9jb21wb25lbnRzL3VpL0Zsb2F0aW5nTmF2YmFyLnRzeFwiKSJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FHistory.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2FRoadmap%2FRoadmapForm.tsx&modules=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fcomponents%2Fui%2FFloatingNavbar.tsx&server=true!\n");
 
 /***/ }),
 
@@ -152,6 +284,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "(ssr)/./components/Roadmap/History.tsx":
+/*!****************************************!*\
+  !*** ./components/Roadmap/History.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ \"(ssr)/./node_modules/axios/lib/axios.js\");\n/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ \"(ssr)/./node_modules/react-hot-toast/dist/index.mjs\");\n/* __next_internal_client_entry_do_not_use__ default auto */ \n\n\n\nconst History = ()=>{\n    const [responses, setResponses] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);\n    const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true);\n    const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{\n        const fetchResponses = async ()=>{\n            try {\n                react_hot_toast__WEBPACK_IMPORTED_MODULE_2__[\"default\"].loading(\"Loading responses...\");\n                const response = await axios__WEBPACK_IMPORTED_MODULE_3__[\"default\"].get(\"/api/responses\");\n                setResponses(response.data);\n                react_hot_toast__WEBPACK_IMPORTED_MODULE_2__[\"default\"].success(\"Responses loaded successfully!\");\n            } catch (error) {\n                setError(\"Failed to fetch responses\");\n                react_hot_toast__WEBPACK_IMPORTED_MODULE_2__[\"default\"].error(\"Failed to fetch responses\");\n            } finally{\n                setLoading(false);\n                react_hot_toast__WEBPACK_IMPORTED_MODULE_2__[\"default\"].dismiss();\n            }\n        };\n        fetchResponses();\n    }, []);\n    const renderLoading = ()=>/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n            className: \"space-y-2\",\n            children: Array.from({\n                length: 5\n            }).map((_, index)=>/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                    className: \"bg-zinc-800 p-3 rounded-md animate-pulse\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            className: \"bg-zinc-700 h-6 w-3/4 mb-2 rounded\"\n                        }, void 0, false, {\n                            fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                            lineNumber: 34,\n                            columnNumber: 11\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            className: \"bg-zinc-700 h-4 w-1/2 rounded\"\n                        }, void 0, false, {\n                            fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                            lineNumber: 35,\n                            columnNumber: 11\n                        }, undefined)\n                    ]\n                }, index, true, {\n                    fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                    lineNumber: 33,\n                    columnNumber: 9\n                }, undefined))\n        }, void 0, false, {\n            fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n            lineNumber: 31,\n            columnNumber: 5\n        }, undefined);\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"bg-black p-4 border-zinc-600 border-2 rounded-2xl\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.Toaster, {}, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                lineNumber: 43,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h2\", {\n                className: \"text-zinc-200 text-xl text-center font-medium mb-2\",\n                children: \"History of Roadmap Generated\"\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                lineNumber: 44,\n                columnNumber: 7\n            }, undefined),\n            loading ? renderLoading() : /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"space-y-2\",\n                children: responses.map((response)=>/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                        className: \"bg-zinc-800 p-3 rounded-md text-zinc-200\",\n                        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: response.content\n                        }, void 0, false, {\n                            fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                            lineNumber: 49,\n                            columnNumber: 15\n                        }, undefined)\n                    }, response.id, false, {\n                        fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                        lineNumber: 48,\n                        columnNumber: 13\n                    }, undefined))\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                lineNumber: 46,\n                columnNumber: 9\n            }, undefined),\n            error && /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"text-red-500 text-center\",\n                children: error\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                lineNumber: 54,\n                columnNumber: 17\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n        lineNumber: 42,\n        columnNumber: 5\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (History);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9jb21wb25lbnRzL1JvYWRtYXAvSGlzdG9yeS50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFDbUQ7QUFDekI7QUFDdUI7QUFFakQsTUFBTU0sVUFBb0I7SUFDeEIsTUFBTSxDQUFDQyxXQUFXQyxhQUFhLEdBQUdQLCtDQUFRQSxDQUFDLEVBQUU7SUFDN0MsTUFBTSxDQUFDUSxTQUFTQyxXQUFXLEdBQUdULCtDQUFRQSxDQUFDO0lBQ3ZDLE1BQU0sQ0FBQ1UsT0FBT0MsU0FBUyxHQUFHWCwrQ0FBUUEsQ0FBQztJQUVuQ0MsZ0RBQVNBLENBQUM7UUFDUixNQUFNVyxpQkFBaUI7WUFDckIsSUFBSTtnQkFDRlQsdURBQUtBLENBQUNLLE9BQU8sQ0FBQztnQkFDZCxNQUFNSyxXQUFXLE1BQU1YLDZDQUFLQSxDQUFDWSxHQUFHLENBQUM7Z0JBQ2pDUCxhQUFhTSxTQUFTRSxJQUFJO2dCQUMxQlosdURBQUtBLENBQUNhLE9BQU8sQ0FBQztZQUNoQixFQUFFLE9BQU9OLE9BQU87Z0JBQ2RDLFNBQVM7Z0JBQ1RSLHVEQUFLQSxDQUFDTyxLQUFLLENBQUM7WUFDZCxTQUFVO2dCQUNSRCxXQUFXO2dCQUNYTix1REFBS0EsQ0FBQ2MsT0FBTztZQUNmO1FBQ0Y7UUFFQUw7SUFDRixHQUFHLEVBQUU7SUFFTCxNQUFNTSxnQkFBZ0Isa0JBQ3BCLDhEQUFDQztZQUFJQyxXQUFVO3NCQUNaQyxNQUFNQyxJQUFJLENBQUM7Z0JBQUVDLFFBQVE7WUFBRSxHQUFHQyxHQUFHLENBQUMsQ0FBQ0MsR0FBR0Msc0JBQ2pDLDhEQUFDUDtvQkFBZ0JDLFdBQVU7O3NDQUN6Qiw4REFBQ087NEJBQUVQLFdBQVU7Ozs7OztzQ0FDYiw4REFBQ087NEJBQUVQLFdBQVU7Ozs7Ozs7bUJBRkxNOzs7Ozs7Ozs7O0lBUWhCLHFCQUNFLDhEQUFDUDtRQUFJQyxXQUFVOzswQkFDYiw4REFBQ2hCLG9EQUFPQTs7Ozs7MEJBQ1IsOERBQUN3QjtnQkFBR1IsV0FBVTswQkFBcUQ7Ozs7OztZQUNsRVosVUFBVVUsZ0NBQ1QsOERBQUNDO2dCQUFJQyxXQUFVOzBCQUNaZCxVQUFVa0IsR0FBRyxDQUFDLENBQUNYLHlCQUNkLDhEQUFDTTt3QkFBc0JDLFdBQVU7a0NBQy9CLDRFQUFDTztzQ0FBR2QsU0FBU2dCLE9BQU87Ozs7Ozt1QkFEWmhCLFNBQVNpQixFQUFFOzs7Ozs7Ozs7O1lBTTFCcEIsdUJBQVMsOERBQUNTO2dCQUFJQyxXQUFVOzBCQUE0QlY7Ozs7Ozs7Ozs7OztBQUczRDtBQUVBLGlFQUFlTCxPQUFPQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcG9ydGZvbGlvLy4vY29tcG9uZW50cy9Sb2FkbWFwL0hpc3RvcnkudHN4P2FiMDYiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBjbGllbnQnXG5pbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUsIHVzZUVmZmVjdCB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCBheGlvcyBmcm9tICdheGlvcyc7XG5pbXBvcnQgdG9hc3QsIHsgVG9hc3RlciB9IGZyb20gJ3JlYWN0LWhvdC10b2FzdCc7XG5cbmNvbnN0IEhpc3Rvcnk6IFJlYWN0LkZDID0gKCkgPT4ge1xuICBjb25zdCBbcmVzcG9uc2VzLCBzZXRSZXNwb25zZXNdID0gdXNlU3RhdGUoW10pO1xuICBjb25zdCBbbG9hZGluZywgc2V0TG9hZGluZ10gPSB1c2VTdGF0ZSh0cnVlKTtcbiAgY29uc3QgW2Vycm9yLCBzZXRFcnJvcl0gPSB1c2VTdGF0ZShudWxsKTtcblxuICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgIGNvbnN0IGZldGNoUmVzcG9uc2VzID0gYXN5bmMgKCkgPT4ge1xuICAgICAgdHJ5IHtcbiAgICAgICAgdG9hc3QubG9hZGluZygnTG9hZGluZyByZXNwb25zZXMuLi4nKTtcbiAgICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBheGlvcy5nZXQoJy9hcGkvcmVzcG9uc2VzJyk7XG4gICAgICAgIHNldFJlc3BvbnNlcyhyZXNwb25zZS5kYXRhKTtcbiAgICAgICAgdG9hc3Quc3VjY2VzcygnUmVzcG9uc2VzIGxvYWRlZCBzdWNjZXNzZnVsbHkhJyk7XG4gICAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgICBzZXRFcnJvcignRmFpbGVkIHRvIGZldGNoIHJlc3BvbnNlcycpO1xuICAgICAgICB0b2FzdC5lcnJvcignRmFpbGVkIHRvIGZldGNoIHJlc3BvbnNlcycpO1xuICAgICAgfSBmaW5hbGx5IHtcbiAgICAgICAgc2V0TG9hZGluZyhmYWxzZSk7XG4gICAgICAgIHRvYXN0LmRpc21pc3MoKTtcbiAgICAgIH1cbiAgICB9O1xuXG4gICAgZmV0Y2hSZXNwb25zZXMoKTtcbiAgfSwgW10pO1xuXG4gIGNvbnN0IHJlbmRlckxvYWRpbmcgPSAoKSA9PiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTJcIj5cbiAgICAgIHtBcnJheS5mcm9tKHsgbGVuZ3RoOiA1IH0pLm1hcCgoXywgaW5kZXgpID0+IChcbiAgICAgICAgPGRpdiBrZXk9e2luZGV4fSBjbGFzc05hbWU9XCJiZy16aW5jLTgwMCBwLTMgcm91bmRlZC1tZCBhbmltYXRlLXB1bHNlXCI+XG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwiYmctemluYy03MDAgaC02IHctMy80IG1iLTIgcm91bmRlZFwiPjwvcD5cbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJiZy16aW5jLTcwMCBoLTQgdy0xLzIgcm91bmRlZFwiPjwvcD5cbiAgICAgICAgPC9kaXY+XG4gICAgICApKX1cbiAgICA8L2Rpdj5cbiAgKTtcblxuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctYmxhY2sgcC00IGJvcmRlci16aW5jLTYwMCBib3JkZXItMiByb3VuZGVkLTJ4bFwiPlxuICAgICAgPFRvYXN0ZXIgLz5cbiAgICAgIDxoMiBjbGFzc05hbWU9XCJ0ZXh0LXppbmMtMjAwIHRleHQteGwgdGV4dC1jZW50ZXIgZm9udC1tZWRpdW0gbWItMlwiPkhpc3Rvcnkgb2YgUm9hZG1hcCBHZW5lcmF0ZWQ8L2gyPlxuICAgICAge2xvYWRpbmcgPyByZW5kZXJMb2FkaW5nKCkgOiAoXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0yXCI+XG4gICAgICAgICAge3Jlc3BvbnNlcy5tYXAoKHJlc3BvbnNlKSA9PiAoXG4gICAgICAgICAgICA8ZGl2IGtleT17cmVzcG9uc2UuaWR9IGNsYXNzTmFtZT1cImJnLXppbmMtODAwIHAtMyByb3VuZGVkLW1kIHRleHQtemluYy0yMDBcIj5cbiAgICAgICAgICAgICAgPHA+e3Jlc3BvbnNlLmNvbnRlbnR9PC9wPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgKSl9XG4gICAgICAgIDwvZGl2PlxuICAgICAgKX1cbiAgICAgIHtlcnJvciAmJiA8ZGl2IGNsYXNzTmFtZT1cInRleHQtcmVkLTUwMCB0ZXh0LWNlbnRlclwiPntlcnJvcn08L2Rpdj59XG4gICAgPC9kaXY+XG4gICk7XG59O1xuXG5leHBvcnQgZGVmYXVsdCBIaXN0b3J5O1xuIl0sIm5hbWVzIjpbIlJlYWN0IiwidXNlU3RhdGUiLCJ1c2VFZmZlY3QiLCJheGlvcyIsInRvYXN0IiwiVG9hc3RlciIsIkhpc3RvcnkiLCJyZXNwb25zZXMiLCJzZXRSZXNwb25zZXMiLCJsb2FkaW5nIiwic2V0TG9hZGluZyIsImVycm9yIiwic2V0RXJyb3IiLCJmZXRjaFJlc3BvbnNlcyIsInJlc3BvbnNlIiwiZ2V0IiwiZGF0YSIsInN1Y2Nlc3MiLCJkaXNtaXNzIiwicmVuZGVyTG9hZGluZyIsImRpdiIsImNsYXNzTmFtZSIsIkFycmF5IiwiZnJvbSIsImxlbmd0aCIsIm1hcCIsIl8iLCJpbmRleCIsInAiLCJoMiIsImNvbnRlbnQiLCJpZCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(ssr)/./components/Roadmap/History.tsx\n");
+
+/***/ }),
+
 /***/ "(ssr)/./components/Roadmap/InputField.tsx":
 /*!*******************************************!*\
   !*** ./components/Roadmap/InputField.tsx ***!
@@ -159,7 +302,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst InputField = ({ label, id, name, value, onChange })=>{\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"mb-4\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"label\", {\n                htmlFor: id,\n                className: \"block text-zinc-200 font-medium mb-1\",\n                children: [\n                    label,\n                    \":\"\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/InputField.tsx\",\n                lineNumber: 14,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"textarea\", {\n                id: id,\n                name: name,\n                value: value,\n                onChange: onChange,\n                className: \"w-full px-3 py-2 bg-zinc-800 p-4 rounded-xl border-[rgba(255, 255, 255, 0.125)] border-[1px] text-white\"\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/InputField.tsx\",\n                lineNumber: 15,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/InputField.tsx\",\n        lineNumber: 13,\n        columnNumber: 5\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputField);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9jb21wb25lbnRzL1JvYWRtYXAvSW5wdXRGaWVsZC50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQTBCO0FBVTFCLE1BQU1DLGFBQXdDLENBQUMsRUFBRUMsS0FBSyxFQUFFQyxFQUFFLEVBQUVDLElBQUksRUFBRUMsS0FBSyxFQUFFQyxRQUFRLEVBQUU7SUFDakYscUJBQ0UsOERBQUNDO1FBQUlDLFdBQVU7OzBCQUNiLDhEQUFDTjtnQkFBTU8sU0FBU047Z0JBQUlLLFdBQVU7O29CQUF3Q047b0JBQU07Ozs7Ozs7MEJBQzVFLDhEQUFDUTtnQkFDQ1AsSUFBSUE7Z0JBQ0pDLE1BQU1BO2dCQUNOQyxPQUFPQTtnQkFDUEMsVUFBVUE7Z0JBQ1ZFLFdBQVU7Ozs7Ozs7Ozs7OztBQUlsQjtBQUVBLGlFQUFlUCxVQUFVQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcG9ydGZvbGlvLy4vY29tcG9uZW50cy9Sb2FkbWFwL0lucHV0RmllbGQudHN4PzAwMWIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcblxuaW50ZXJmYWNlIElucHV0RmllbGRQcm9wcyB7XG4gIGxhYmVsOiBzdHJpbmc7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgdmFsdWU6IHN0cmluZztcbiAgb25DaGFuZ2U6IChlOiBSZWFjdC5DaGFuZ2VFdmVudDxIVE1MVGV4dEFyZWFFbGVtZW50PikgPT4gdm9pZDtcbn1cblxuY29uc3QgSW5wdXRGaWVsZDogUmVhY3QuRkM8SW5wdXRGaWVsZFByb3BzPiA9ICh7IGxhYmVsLCBpZCwgbmFtZSwgdmFsdWUsIG9uQ2hhbmdlIH0pID0+IHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cIm1iLTRcIj5cbiAgICAgIDxsYWJlbCBodG1sRm9yPXtpZH0gY2xhc3NOYW1lPVwiYmxvY2sgdGV4dC16aW5jLTIwMCBmb250LW1lZGl1bSBtYi0xXCI+e2xhYmVsfTo8L2xhYmVsPlxuICAgICAgPHRleHRhcmVhXG4gICAgICAgIGlkPXtpZH1cbiAgICAgICAgbmFtZT17bmFtZX1cbiAgICAgICAgdmFsdWU9e3ZhbHVlfVxuICAgICAgICBvbkNoYW5nZT17b25DaGFuZ2V9XG4gICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zIHB5LTIgYmctemluYy04MDAgcC00IHJvdW5kZWQteGwgYm9yZGVyLVtyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMTI1KV0gYm9yZGVyLVsxcHhdIHRleHQtd2hpdGVcIlxuICAgICAgLz5cbiAgICA8L2Rpdj5cbiAgKTtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IElucHV0RmllbGQ7XG4iXSwibmFtZXMiOlsiUmVhY3QiLCJJbnB1dEZpZWxkIiwibGFiZWwiLCJpZCIsIm5hbWUiLCJ2YWx1ZSIsIm9uQ2hhbmdlIiwiZGl2IiwiY2xhc3NOYW1lIiwiaHRtbEZvciIsInRleHRhcmVhIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./components/Roadmap/InputField.tsx\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst InputField = ({ label, id, name, value, onChange })=>{\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"mb-4\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"label\", {\n                htmlFor: id,\n                className: \"block text-zinc-200 font-medium mb-1\",\n                children: [\n                    label,\n                    \":\"\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/InputField.tsx\",\n                lineNumber: 14,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"textarea\", {\n                id: id,\n                name: name,\n                value: value,\n                onChange: onChange,\n                className: \"w-full px-3 py-2 bg-zinc-800 p-4 rounded-xl border-[rgba(255, 255, 255, 0.125)] border-[1px] \"\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/InputField.tsx\",\n                lineNumber: 15,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/InputField.tsx\",\n        lineNumber: 13,\n        columnNumber: 5\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputField);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9jb21wb25lbnRzL1JvYWRtYXAvSW5wdXRGaWVsZC50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQTBCO0FBVTFCLE1BQU1DLGFBQXdDLENBQUMsRUFBRUMsS0FBSyxFQUFFQyxFQUFFLEVBQUVDLElBQUksRUFBRUMsS0FBSyxFQUFFQyxRQUFRLEVBQUU7SUFDakYscUJBQ0UsOERBQUNDO1FBQUlDLFdBQVU7OzBCQUNiLDhEQUFDTjtnQkFBTU8sU0FBU047Z0JBQUlLLFdBQVU7O29CQUF3Q047b0JBQU07Ozs7Ozs7MEJBQzVFLDhEQUFDUTtnQkFDQ1AsSUFBSUE7Z0JBQ0pDLE1BQU1BO2dCQUNOQyxPQUFPQTtnQkFDUEMsVUFBVUE7Z0JBQ1ZFLFdBQVU7Ozs7Ozs7Ozs7OztBQUlsQjtBQUVBLGlFQUFlUCxVQUFVQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcG9ydGZvbGlvLy4vY29tcG9uZW50cy9Sb2FkbWFwL0lucHV0RmllbGQudHN4PzAwMWIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcblxuaW50ZXJmYWNlIElucHV0RmllbGRQcm9wcyB7XG4gIGxhYmVsOiBzdHJpbmc7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgdmFsdWU6IHN0cmluZztcbiAgb25DaGFuZ2U6IChlOiBSZWFjdC5DaGFuZ2VFdmVudDxIVE1MVGV4dEFyZWFFbGVtZW50PikgPT4gdm9pZDtcbn1cblxuY29uc3QgSW5wdXRGaWVsZDogUmVhY3QuRkM8SW5wdXRGaWVsZFByb3BzPiA9ICh7IGxhYmVsLCBpZCwgbmFtZSwgdmFsdWUsIG9uQ2hhbmdlIH0pID0+IHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cIm1iLTRcIj5cbiAgICAgIDxsYWJlbCBodG1sRm9yPXtpZH0gY2xhc3NOYW1lPVwiYmxvY2sgdGV4dC16aW5jLTIwMCBmb250LW1lZGl1bSBtYi0xXCI+e2xhYmVsfTo8L2xhYmVsPlxuICAgICAgPHRleHRhcmVhXG4gICAgICAgIGlkPXtpZH1cbiAgICAgICAgbmFtZT17bmFtZX1cbiAgICAgICAgdmFsdWU9e3ZhbHVlfVxuICAgICAgICBvbkNoYW5nZT17b25DaGFuZ2V9XG4gICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zIHB5LTIgYmctemluYy04MDAgcC00IHJvdW5kZWQteGwgYm9yZGVyLVtyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMTI1KV0gYm9yZGVyLVsxcHhdIFwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICApO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgSW5wdXRGaWVsZDtcbiJdLCJuYW1lcyI6WyJSZWFjdCIsIklucHV0RmllbGQiLCJsYWJlbCIsImlkIiwibmFtZSIsInZhbHVlIiwib25DaGFuZ2UiLCJkaXYiLCJjbGFzc05hbWUiLCJodG1sRm9yIiwidGV4dGFyZWEiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./components/Roadmap/InputField.tsx\n");
 
 /***/ }),
 
@@ -266,7 +409,25 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst History = ()=>{\n    // Placeholder for history\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"bg-black p-4 border-zinc-600 border-2 rounded-2xl\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h2\", {\n                className: \"text-zinc-200 text-xl text-center font-medium mb-2\",\n                children: \"History of Roadmap Generated\"\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                lineNumber: 7,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"space-y-2\"\n            }, void 0, false, {\n                fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n                lineNumber: 8,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx\",\n        lineNumber: 6,\n        columnNumber: 5\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (History);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9jb21wb25lbnRzL1JvYWRtYXAvSGlzdG9yeS50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQTBCO0FBRTFCLE1BQU1DLFVBQW9CO0lBQ3hCLDBCQUEwQjtJQUMxQixxQkFDRSw4REFBQ0M7UUFBSUMsV0FBVTs7MEJBQ2IsOERBQUNDO2dCQUFHRCxXQUFVOzBCQUFxRDs7Ozs7OzBCQUNuRSw4REFBQ0Q7Z0JBQUlDLFdBQVU7Ozs7Ozs7Ozs7OztBQUlyQjtBQUVBLGlFQUFlRixPQUFPQSxFQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcG9ydGZvbGlvLy4vY29tcG9uZW50cy9Sb2FkbWFwL0hpc3RvcnkudHN4P2FiMDYiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcblxuY29uc3QgSGlzdG9yeTogUmVhY3QuRkMgPSAoKSA9PiB7XG4gIC8vIFBsYWNlaG9sZGVyIGZvciBoaXN0b3J5XG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ibGFjayBwLTQgYm9yZGVyLXppbmMtNjAwIGJvcmRlci0yIHJvdW5kZWQtMnhsXCI+XG4gICAgICA8aDIgY2xhc3NOYW1lPVwidGV4dC16aW5jLTIwMCB0ZXh0LXhsIHRleHQtY2VudGVyIGZvbnQtbWVkaXVtIG1iLTJcIj5IaXN0b3J5IG9mIFJvYWRtYXAgR2VuZXJhdGVkPC9oMj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0yXCI+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgKTtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IEhpc3Rvcnk7XG4iXSwibmFtZXMiOlsiUmVhY3QiLCJIaXN0b3J5IiwiZGl2IiwiY2xhc3NOYW1lIiwiaDIiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./components/Roadmap/History.tsx\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $$typeof: () => (/* binding */ $$typeof),
+/* harmony export */   __esModule: () => (/* binding */ __esModule),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/build/webpack/loaders/next-flight-loader/module-proxy */ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/module-proxy.js");
+
+const proxy = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/Users/nishanttiwari/projects/edunexusai/components/Roadmap/History.tsx`)
+
+// Accessing the __esModule property and exporting $$typeof are required here.
+// The __esModule getter forces the proxy target to create the default export
+// and the $$typeof value is for rendering logic to determine if the module
+// is a client boundary.
+const { __esModule, $$typeof } = proxy;
+const __default__ = proxy.default;
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__default__);
 
 /***/ }),
 
@@ -348,7 +509,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/next-auth","vendor-chunks/@babel","vendor-chunks/next-themes","vendor-chunks/react-icons","vendor-chunks/framer-motion","vendor-chunks/tailwind-merge","vendor-chunks/clsx"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Froadmap%2Fpage&page=%2Froadmap%2Fpage&appPaths=%2Froadmap%2Fpage&pagePath=private-next-app-dir%2Froadmap%2Fpage.tsx&appDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/next-auth","vendor-chunks/@babel","vendor-chunks/next-themes","vendor-chunks/framer-motion","vendor-chunks/axios","vendor-chunks/asynckit","vendor-chunks/react-icons","vendor-chunks/debug","vendor-chunks/mime-db","vendor-chunks/form-data","vendor-chunks/follow-redirects","vendor-chunks/tailwind-merge","vendor-chunks/react-hot-toast","vendor-chunks/goober","vendor-chunks/clsx","vendor-chunks/supports-color","vendor-chunks/proxy-from-env","vendor-chunks/ms","vendor-chunks/mime-types","vendor-chunks/has-flag","vendor-chunks/delayed-stream","vendor-chunks/combined-stream"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Froadmap%2Fpage&page=%2Froadmap%2Fpage&appPaths=%2Froadmap%2Fpage&pagePath=private-next-app-dir%2Froadmap%2Fpage.tsx&appDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fnishanttiwari%2Fprojects%2Fedunexusai&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
 module.exports = __webpack_exports__;
 
 })();

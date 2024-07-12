@@ -17,7 +17,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, id, name, value, onChang
         name={name}
         value={value}
         onChange={onChange}
-        className="w-full px-3 py-2 bg-zinc-800 p-4 rounded-xl border-[rgba(255, 255, 255, 0.125)] border-[1px] text-white"
+        className="w-full px-3 py-2 bg-zinc-800 p-4 rounded-xl border-[rgba(255, 255, 255, 0.125)] border-[1px] "
       />
     </div>
   );
