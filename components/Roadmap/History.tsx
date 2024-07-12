@@ -1,18 +1,21 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const History: React.FC = () => {
   const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchResponses = async () => {
       try {
         const response = await axios.get('/api/responses');
         setResponses(response.data);
+        console.log(response.data);
         toast.success('Responses loaded successfully!');
       } catch (error) {
         setError('Failed to fetch responses');
@@ -25,6 +28,10 @@ const History: React.FC = () => {
 
     fetchResponses();
   }, []);
+
+  const handleItemClick = (responseId: number) => {
+    router.push(`/roadmap/${responseId}`);
+  };
 
   const renderLoading = () => (
     <div className="space-y-2">
@@ -44,8 +51,12 @@ const History: React.FC = () => {
       {loading ? renderLoading() : (
         <div className="space-y-2">
           {responses.map((response) => (
-            <div key={response.id} className="bg-zinc-800 p-3 rounded-md text-zinc-200">
-              <p>{response.content}</p>
+            <div
+              key={response.id}
+              className="bg-zinc-800 p-3 rounded-md text-zinc-200 cursor-pointer"
+              onClick={() => handleItemClick(response.id)}
+            >
+              <p>{response.title}</p>
             </div>
           ))}
         </div>

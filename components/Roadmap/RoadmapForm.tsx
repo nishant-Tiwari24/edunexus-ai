@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import InputField from './InputField';
 import Button from './Button';
+import { toast, ToastBar } from 'react-hot-toast';
 
 const RoadmapForm = () => {
   const { data: session } = useSession();
@@ -42,14 +43,15 @@ const RoadmapForm = () => {
       }
 
       const data = await response.json();
-      alert('Roadmap generated and saved!');
+      toast.success('Roadmap generated and saved!');
     } catch (error) {
       console.error('Error:', error);
-      alert('Error submitting roadmap');
+      toast.error('Error submitting roadmap');
     }
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit} className="space-y-4 bg-black p-10 border-zinc-600 border-2 rounded-2xl">
       <InputField
         label="Syllabus"
@@ -88,6 +90,7 @@ const RoadmapForm = () => {
       />
       <Button label='Generate Roadmap'/>
     </form>
+    </>
   );
 };
 
