@@ -37,6 +37,29 @@ const RoadmapPage: React.FC = () => {
     fetchDetails();
   }, [responseId]);
 
+  const handleBoxClick = (key: string) => {
+    alert(`Details for ${key}: ${response?.content[key]}`);
+  };
+
+  const renderContent = (content: Record<string, string>) => {
+    return Object.entries(content).map(([key, value], index) => {
+      const isLast = index === Object.entries(content).length - 1;
+      const isThird = (index + 1) % 3 === 0;
+      const uniqueId = uuidv4();
+      return (
+        <RoadmapBox
+          id={uniqueId}
+          keyText={key}
+          valueText={value}
+          isLast={isLast}
+          isThird={isThird}
+          key={uniqueId}
+          onClick={() => handleBoxClick(key)} // Add onClick handler
+        />
+      );
+    });
+  };
+
   if (loading) {
     return <Loading />;
   }
@@ -44,15 +67,6 @@ const RoadmapPage: React.FC = () => {
   if (error) {
     return <Error message={error} />;
   }
-
-  const renderContent = (content: Record<string, string>) => {
-    return Object.entries(content).map(([key, value], index) => {
-      const isLast = index === Object.entries(content).length - 1;
-      const isThird = (index + 1) % 3 === 0;
-      const uniqueId = uuidv4();
-      return <RoadmapBox id={uniqueId} keyText={key} valueText={value} isLast={isLast} isThird={isThird} key={uniqueId} />;
-    });
-  };
 
   return (
     <div className="bg-black p-36 border-zinc-600">

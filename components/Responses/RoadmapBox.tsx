@@ -6,11 +6,12 @@ interface RoadmapBoxProps {
   valueText: string;
   isLast: boolean;
   isThird: boolean;
+  onClick: () => void
 }
 
-const RoadmapBox: React.FC<RoadmapBoxProps> = ({ id, keyText, valueText, isLast, isThird }) => {
+const RoadmapBox: React.FC<RoadmapBoxProps> = ({ id, keyText, valueText, isLast, isThird, onClick }) => {
   return (
-    <div id={id} className="relative flex flex-col items-center p-10 m-2 rounded-3xl border-[2px] border-zinc-600 text-center bg-gradient-to-r from-zinc-800 to-black-100 text-white shadow-2xl hover:border-zinc-700 cursor-pointer">
+    <div id={id} onClick={onClick} className="relative flex flex-col items-center p-10 m-2 rounded-3xl border-[2px] border-zinc-600 text-center bg-gradient-to-r from-zinc-800 to-black-100 text-white shadow-2xl hover:border-zinc-700 cursor-pointer">
       <p className="font-medium text-lg text-gray-400">{keyText}</p>
       <p>{valueText}</p>
       {!isLast && (
