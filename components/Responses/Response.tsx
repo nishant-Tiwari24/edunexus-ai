@@ -1,7 +1,7 @@
 'use client';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Loading from './Loading';
 import Error from './Error';
 import RoadmapBox from './RoadmapBox';
@@ -21,6 +21,7 @@ const RoadmapPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const params = useParams();
   const responseId = params.responses;
+  const router = useRouter();
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -38,7 +39,8 @@ const RoadmapPage: React.FC = () => {
   }, [responseId]);
 
   const handleBoxClick = (key: string) => {
-    alert(`Details for ${key}: ${response?.content[key]}`);
+    const jsonContentId = encodeURIComponent(key);
+    router.push(`/roadmap/${responseId}/${jsonContentId}`);
   };
 
   const renderContent = (content: Record<string, string>) => {
@@ -54,7 +56,7 @@ const RoadmapPage: React.FC = () => {
           isLast={isLast}
           isThird={isThird}
           key={uniqueId}
-          onClick={() => handleBoxClick(key)} // Add onClick handler
+          onClick={() => handleBoxClick(uniqueId)} 
         />
       );
     });
