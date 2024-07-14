@@ -6,10 +6,16 @@ import OpenAI from 'openai';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+interface Roadmap {
+  title: string;
+  data: Record<string, string>;
+}
+
+
 export async function POST(req: NextRequest, res: NextResponse) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return NextResponse.json({ message: "User unauthorized" }, { status: 401 });
+    return NextResponse.json({ message: "User unauthorized" });
   }
 
   const { syllabus, learningObj, refResources, prerequisites, duration } = await req.json();
@@ -24,13 +30,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   try {
     const completion = await openai.chat.completions.create({
-      messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: prompt }],
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: prompt }
+      ],
       model: "gpt-4",
     });
 
     const roadmap = JSON.parse(completion.choices[0]?.message?.content);
 
-    const savedContent = await prisma.chatGptResponse.create({
+    const savedResponse = await prisma.chatGptResponse.create({
       data: {
         content: roadmap.data,
         title: roadmap.title,
@@ -38,7 +47,21 @@ export async function POST(req: NextRequest, res: NextResponse) {
       },
     });
 
-    return NextResponse.json(savedContent, { status: 201 });
+    const jsonContentPromises = Object.entries(roadmap.data).map(([key, value]) => {
+      if (typeof key === 'string' && typeof value === 'string') {
+        return prisma.jsonContent.create({
+          data: {
+            key,
+            value,
+            responseId: savedResponse.id,
+          },
+        });
+      }
+    });
+
+    await Promise.all(jsonContentPromises);
+    
+    return NextResponse.json(savedResponse, { status: 201 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Unable to generate and save response' }, { status: 500 });

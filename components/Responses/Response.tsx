@@ -6,6 +6,7 @@ import Loading from './Loading';
 import Error from './Error';
 import RoadmapBox from './RoadmapBox';
 import { renderTitle } from './RenderTitle';
+import { v4 as uuidv4 } from 'uuid';
 
 interface ChatGptResponse {
   id: number;
@@ -48,16 +49,16 @@ const RoadmapPage: React.FC = () => {
     return Object.entries(content).map(([key, value], index) => {
       const isLast = index === Object.entries(content).length - 1;
       const isThird = (index + 1) % 3 === 0;
-      return <RoadmapBox keyText={key} valueText={value} isLast={isLast} isThird={isThird} key={index} />;
+      const uniqueId = uuidv4();
+      return <RoadmapBox id={uniqueId} keyText={key} valueText={value} isLast={isLast} isThird={isThird} key={uniqueId} />;
     });
   };
 
-
   return (
     <div className="bg-black p-36 border-zinc-600">
-      <h2 className=" text-xl text-center text-gray-500 font-medium mb-2">Roadmap Details</h2>
+      <h2 className="text-xl text-center text-gray-500 font-medium mb-2">Roadmap Details</h2>
       <div className="p-3 rounded-md text-zinc-200 relative overflow-hidden">
-        {response && <p className="text-3xl font-bold text-center mb-4">{response && renderTitle(response.title)}</p>}
+        {response && <p className="text-3xl font-bold text-center mb-4">{renderTitle(response.title)}</p>}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {response && renderContent(response.content)}
         </div>

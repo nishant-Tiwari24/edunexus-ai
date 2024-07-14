@@ -18,10 +18,20 @@ model User {
 
 
 model ChatGptResponse {
-  id        Int      @id @default(autoincrement())
-  content  Json
-  title    String
-  createdAt DateTime @default(now())
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  id           Int           @id @default(autoincrement())
+  title        String
+  content      Json
+  createdAt    DateTime      @default(now())
+  userId       Int
+  user         User          @relation(fields: [userId], references: [id])
+  jsonContents JsonContent[]
 }
+
+model JsonContent {
+  id          Int           @id @default(autoincrement())
+  key         String
+  value       String
+  responseId  Int
+  response    ChatGptResponse @relation(fields: [responseId], references: [id])
+}
+
