@@ -20,7 +20,6 @@ model User {
 model ChatGptResponse {
   id           Int           @id @default(autoincrement())
   title        String
-  content      Json
   createdAt    DateTime      @default(now())
   userId       Int
   user         User          @relation(fields: [userId], references: [id])

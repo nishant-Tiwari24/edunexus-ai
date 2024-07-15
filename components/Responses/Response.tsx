@@ -6,13 +6,19 @@ import Loading from './Loading';
 import Error from './Error';
 import RoadmapBox from './RoadmapBox';
 import { renderTitle } from './RenderTitle';
-import { v4 as uuidv4 } from 'uuid';
+
+interface JsonContent {
+  id: number;
+  key: string;
+  value: string;
+  responseId: number;
+}
 
 interface ChatGptResponse {
   id: number;
   title: string;
-  content: Record<string, string>;
   createdAt: string;
+  jsonContents: JsonContent[];
 }
 
 const RoadmapPage: React.FC = () => {
@@ -38,25 +44,24 @@ const RoadmapPage: React.FC = () => {
     fetchDetails();
   }, [responseId]);
 
-  const handleBoxClick = (key: string) => {
-    const jsonContentId = encodeURIComponent(key);
+  const handleBoxClick = (id: number) => {
+    const jsonContentId = id;
     router.push(`/roadmap/${responseId}/${jsonContentId}`);
   };
 
-  const renderContent = (content: Record<string, string>) => {
-    return Object.entries(content).map(([key, value], index) => {
-      const isLast = index === Object.entries(content).length - 1;
+  const renderContent = (jsonContents: JsonContent[]) => {
+    return jsonContents.map(({ id, key, value }, index) => {
+      const isLast = index === jsonContents.length - 1;
       const isThird = (index + 1) % 3 === 0;
-      const uniqueId = uuidv4();
       return (
         <RoadmapBox
-          id={uniqueId}
+          id={id.toString()}
           keyText={key}
           valueText={value}
           isLast={isLast}
           isThird={isThird}
-          key={uniqueId}
-          onClick={() => handleBoxClick(uniqueId)} 
+          key={id}
+          onClick={() => handleBoxClick(id)}
         />
       );
     });
@@ -76,7 +81,7 @@ const RoadmapPage: React.FC = () => {
       <div className="p-3 rounded-md text-zinc-200 relative overflow-hidden">
         {response && <p className="text-3xl font-bold text-center mb-4">{renderTitle(response.title)}</p>}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {response && renderContent(response.content)}
+          {response && renderContent(response.jsonContents)}
         </div>
         <p className="text-zinc-400 text-sm mt-4">
           {response && new Date(response.createdAt).toLocaleString()}

@@ -11,7 +11,6 @@ interface Roadmap {
   data: Record<string, string>;
 }
 
-
 export async function POST(req: NextRequest, res: NextResponse) {
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -20,8 +19,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   const { syllabus, learningObj, refResources, prerequisites, duration } = await req.json();
 
-  const prompt = `Generate a roadmap to learn the given subject, based on the information given below. The response should be structured into a JSON format with two keys: 'title' and 'data'. The 'title' key should have a value that is an detailed title generated for the roadmap . The 'data' key should contain a JSON object where the key is the name of the main topic and the value is a single string of subtopics under that main topic. Do not use any punctuation or markdown. Roadmap should be in the correct order and generate minimum 12 key value for data
-  
+  const prompt = `Generate a roadmap to learn the given subject, based on the information given below. The response should be structured into a JSON format with two keys: 'title' and 'data'. The 'title' key should have a value that is a detailed title generated for the roadmap. The 'data' key should contain a JSON object where the key is the name of the main topic and the value is a single string of subtopics under that main topic. Do not use any punctuation or markdown. The roadmap should be in the correct order and generate a minimum of 12 key-value pairs for data.
+
   Syllabus: ${syllabus || "N/A"}
   Learning Objectives: ${learningObj || "N/A"}
   Reference Resources: ${refResources || "N/A"}
@@ -37,30 +36,27 @@ export async function POST(req: NextRequest, res: NextResponse) {
       model: "gpt-4",
     });
 
-    const roadmap = JSON.parse(completion.choices[0]?.message?.content);
+    const roadmap: Roadmap = JSON.parse(completion.choices[0]?.message?.content);
 
     const savedResponse = await prisma.chatGptResponse.create({
       data: {
-        content: roadmap.data,
         title: roadmap.title,
         userId: session.user.id,
       },
     });
 
     const jsonContentPromises = Object.entries(roadmap.data).map(([key, value]) => {
-      if (typeof key === 'string' && typeof value === 'string') {
-        return prisma.jsonContent.create({
-          data: {
-            key,
-            value,
-            responseId: savedResponse.id,
-          },
-        });
-      }
+      return prisma.jsonContent.create({
+        data: {
+          key,
+          value,
+          responseId: savedResponse.id,
+        },
+      });
     });
 
     await Promise.all(jsonContentPromises);
-    
+
     return NextResponse.json(savedResponse, { status: 201 });
   } catch (error) {
     console.error(error);
@@ -87,6 +83,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
           id: responseId,
           userId: session.user.id,
         },
+        include: {
+          jsonContents: true,
+        },
       });
 
       if (!response) {
@@ -98,6 +97,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
       const responses = await prisma.chatGptResponse.findMany({
         where: {
           userId: session.user.id,
+        },
+        include: {
+          jsonContents: true,
         },
       });
 
