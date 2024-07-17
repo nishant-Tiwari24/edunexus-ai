@@ -44,9 +44,14 @@ const RoadmapPage: React.FC = () => {
     fetchDetails();
   }, [responseId]);
 
-  const handleBoxClick = (id: number) => {
+  const handleBoxClick = async (id: number) => {
     const jsonContentId = id;
-    router.push(`/roadmap/${responseId}/${jsonContentId}`);
+    try {
+      router.push(`/roadmap/${responseId}/${jsonContentId}`);
+      await axios.post(`/api/jsoncontent/${jsonContentId}`);
+    } catch (err) {
+      setError('Failed to process click');
+    }
   };
 
   const renderContent = (jsonContents: JsonContent[]) => {

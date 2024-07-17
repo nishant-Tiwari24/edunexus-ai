@@ -32,5 +32,14 @@ model JsonContent {
   value       String
   responseId  Int
   response    ChatGptResponse @relation(fields: [responseId], references: [id])
+  subtopics Subtopics[]
+}
+
+
+model Subtopics {
+  id        Int @id @default(autoincrement())
+  titles    String
+  JsonId    Int
+  subtopics JsonContent @relation(fields: [JsonId], references: [id])
 }
 

@@ -45,9 +45,9 @@ const History: React.FC = () => {
   );
 
   return (
-    <div className="bg-black p-4 border-zinc-600 border-2 rounded-2xl">
+    <div className="bg-black p-4 border-zinc-600 h-[720px] border-2 overflow-y-scroll rounded-2xl">
       <Toaster />
-      <h2 className="text-zinc-200 text-xl text-center font-medium mb-2">History of Roadmap Generated</h2>
+      <h2 className="text-zinc-200  text-xl text-center font-medium mb-2">History of Roadmap Generated</h2>
       {loading ? renderLoading() : (
         <div className="space-y-2">
           {responses.map((response) => (
