@@ -11,8 +11,7 @@ const HomePage: React.FC = () => {
     <>
     <FloatingNav navItems={navItems} />
     <div 
-  className="bg-black min-h-screen text-white py-36 bg-cover bg-center" 
-  style={{ backgroundImage: 'url(assets/footer-grid.svg)' }}
+  className=" min-h-screen text-white py-36 bg-contain bg-center"
 >
   <div className="max-w-7xl h-full mx-auto">
     <header className="flex justify-center items-center mb-8">

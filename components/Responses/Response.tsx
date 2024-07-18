@@ -81,7 +81,7 @@ const RoadmapPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-black p-36 border-zinc-600">
+    <div className="bg-[url('/bg.avif')] bg-center bg-cover bg-opacity-25 p-36 border-zinc-600">
       <h2 className="text-xl text-center text-gray-500 font-medium mb-2">Roadmap Details</h2>
       <div className="p-3 rounded-md text-zinc-200 relative overflow-hidden">
         {response && <p className="text-3xl font-bold text-center mb-4">{renderTitle(response.title)}</p>}

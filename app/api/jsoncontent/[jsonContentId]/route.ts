@@ -36,13 +36,12 @@ export async function POST(req: NextRequest, { params }: { params: { jsonContent
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt }
       ],
-      model: "gpt-4o",
+      model: "gpt-4",
     });
 
     const subtopicsText = completion.choices[0].message.content.trim();
     const subtopicsTitles = subtopicsText.split('\n').filter(line => line.length > 0);
 
-    // Save the generated subtopics to the database
     const subtopicPromises = subtopicsTitles.map(title =>
       prisma.subtopics.create({
         data: {
