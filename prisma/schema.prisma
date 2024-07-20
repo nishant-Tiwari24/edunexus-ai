@@ -41,5 +41,13 @@ model Subtopics {
   titles    String
   JsonId    Int
   subtopics JsonContent @relation(fields: [JsonId], references: [id])
+  contents Content[]
+}
+
+model Content {
+  id         Int @id @default(autoincrement())
+  content    String
+  SubtopicId Int
+  subtopic   Subtopics @relation(fields: [SubtopicId], references: [id])
 }
 
