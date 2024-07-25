@@ -33,7 +33,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt }
       ],
-      model: "gpt-4",
+      model: "gpt-4o",
     });
 
     const roadmap: Roadmap = JSON.parse(completion.choices[0]?.message?.content);

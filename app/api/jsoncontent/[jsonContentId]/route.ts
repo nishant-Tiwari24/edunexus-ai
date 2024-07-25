@@ -29,14 +29,14 @@ export async function POST(req: NextRequest, { params }: { params: { jsonContent
     }
 
     const main = jsonContent.value;
-    const prompt = `Generate 10 or more important subtopics for the topic "${main}" so I get to know completely about this topic in detail.`;
+    const prompt = `Generate 15 in the sequential order starting from 1 to 15 , which will cover all the knowledge about topic ${main} so I get to know completely about this topic in detail. i want  Just the main topic of 6-7 words. just the topics no extra words. and it is not in a sequential order. in place of numbers like 1, 2, 3 give a emoji. dont give anything else other then the response i asked for. just the response. not anything else`;
 
     const completion = await openai.chat.completions.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt }
       ],
-      model: "gpt-4",
+      model: "gpt-4o",
     });
 
     const subtopicsText = completion.choices[0].message.content.trim();
