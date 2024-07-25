@@ -18,7 +18,7 @@ const JsonContentPage: React.FC = () => {
   const [videos, setVideos] = useState<string[]>([]);
   const params = useParams();
   const router = useRouter();
-
+  const key = process.env.YOUTUBE
   const subtopicId = params.content;
 
   console.log('subtopicId:', subtopicId);
@@ -51,7 +51,7 @@ const JsonContentPage: React.FC = () => {
               q: query,
               type: 'video',
               videoDuration: 'long',
-              key: 'AIzaSyDGn-TG6eHy8VxYybyrIJzfELP2E5XHjmo'
+              key: key
             }
           }
         );
