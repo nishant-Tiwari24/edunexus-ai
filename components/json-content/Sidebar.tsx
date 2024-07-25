@@ -55,7 +55,7 @@ const Sidebar: React.FC = () => {
   }
 
   return (
-<div className={`fixed flex flex-col bg-zinc-900 min-h-screen border-r-2 border-zinc-800  h-full ${isOpen ? 'w-96' : 'w-20'} transition-width duration-300 ease-in-out`}>
+<div className={`fixed flex flex-col bg-gradient-to-br from-black to-zinc-800 min-h-screen border-r-2 border-zinc-800  h-full ${isOpen ? 'w-96' : 'w-20'} transition-width duration-300 ease-in-out`}>
       <div className={`flex-shrink-0 p-4 flex items-center ${isOpen ? 'justify-between' : 'justify-center'}`}>
         {isOpen && <h1 className="text-2xl px-2 font-semibold text-white">Let's Conquer This Level 🔥</h1>}
       </div>
