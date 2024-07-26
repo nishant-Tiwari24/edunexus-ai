@@ -4,7 +4,7 @@ import OpenAI from 'openai';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const url = new URL(req.url);
   const subtopicId = parseInt(url.pathname.split('/').pop() || '');
 
@@ -29,7 +29,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
       },
     });
 
-    const prompt = `You are an expert on  ${subtopic.titles}. Your job is to teach the given sub-topic: ${subtopic.titles} in extreme detail.
+    if (existingContent && existingContent.content.trim() !== '') {
+      return NextResponse.json({ message: 'Content already exists' }, { status: 200 });
+    }
+
+    const prompt = `You are an expert on ${subtopic.titles}. Your job is to teach the given sub-topic: ${subtopic.titles} in extreme detail.
     1. Use an explanation that is elaborate and detailed but easy to understand.
     2. Use examples to explain the concept.
     3. If it is related to code, then include a code snippet to explain the concept.
@@ -45,23 +49,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     const contentText = completion.choices[0].message.content.trim();
 
-    if (existingContent) {
-      await prisma.content.update({
-        where: {
-          id: existingContent.id,
-        },
-        data: {
-          content: contentText,
-        },
-      });
-    } else {
-      await prisma.content.create({
-        data: {
-          SubtopicId: subtopicId,
-          content: contentText,
-        },
-      });
-    }
+    await prisma.content.create({
+      data: {
+        SubtopicId: subtopicId,
+        content: contentText,
+      },
+    });
 
     return NextResponse.json({ message: 'Content generated and saved successfully' }, { status: 201 });
   } catch (error) {

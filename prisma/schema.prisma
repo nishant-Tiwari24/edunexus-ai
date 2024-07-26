@@ -14,6 +14,7 @@ model User {
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   responses ChatGptResponse[]
+  @@index([id])
 }
 
 
@@ -24,6 +25,7 @@ model ChatGptResponse {
   userId       Int
   user         User          @relation(fields: [userId], references: [id])
   jsonContents JsonContent[]
+  @@index([userId])
 }
 
 model JsonContent {
@@ -33,6 +35,7 @@ model JsonContent {
   responseId  Int
   response    ChatGptResponse @relation(fields: [responseId], references: [id])
   subtopics Subtopics[]
+  @@index([responseId])
 }
 
 
@@ -42,6 +45,7 @@ model Subtopics {
   JsonId    Int
   subtopics JsonContent @relation(fields: [JsonId], references: [id])
   contents Content[]
+  @@index([JsonId])
 }
 
 model Content {
@@ -49,5 +53,19 @@ model Content {
   content    String
   SubtopicId Int
   subtopic   Subtopics @relation(fields: [SubtopicId], references: [id])
+  quizess Quiz[]
+  @@index([SubtopicId])
 }
 
+model Quiz {
+  id          Int       @id @default(autoincrement())
+  question    String
+  options     Json
+  correct     String
+  timeStarted DateTime  
+  timeEnded   DateTime  
+  ContentId  Int
+  Completed   Boolean
+  content    Content @relation(fields: [ContentId], references: [id])
+  @@index([ContentId])
+}

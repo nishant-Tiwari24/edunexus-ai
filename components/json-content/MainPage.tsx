@@ -1,10 +1,10 @@
-'use client';
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Loading from '../content/Loading';
-import MarkdownPreview from '@uiw/react-markdown-preview';
-import YouTube from 'react-youtube';
+"use client";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import Loading from "../content/Loading";
+import MarkdownPreview from "@uiw/react-markdown-preview";
+import YouTube from "react-youtube";
 
 interface ContentItem {
   SubtopicId: string;
@@ -18,19 +18,19 @@ const JsonContentPage: React.FC = () => {
   const [videos, setVideos] = useState<string[]>([]);
   const params = useParams();
   const router = useRouter();
-  const key = process.env.YOUTUBE
+  const key = process.env.YOUTUBE;
   const subtopicId = params.content;
 
-  console.log('subtopicId:', subtopicId);
+  console.log("subtopicId:", subtopicId);
 
   useEffect(() => {
     const fetchContent = async () => {
       try {
         const res = await axios.get(`/api/content/${subtopicId}`);
         setContent(res.data);
-        console.log('Fetched content:', res.data);
+        console.log("Fetched content:", res.data);
       } catch (err) {
-        setError('Failed to fetch content');
+        setError("Failed to fetch content");
       } finally {
         setLoading(false);
       }
@@ -46,24 +46,24 @@ const JsonContentPage: React.FC = () => {
           `https://www.googleapis.com/youtube/v3/search`,
           {
             params: {
-              part: 'snippet',
+              part: "snippet",
               maxResults: 4,
               q: query,
-              type: 'video',
-              videoDuration: 'long',
-              key: key
-            }
+              type: "video",
+              videoDuration: "long",
+              key: "",
+            },
           }
         );
         const videoIds = res.data.items.map((item: any) => item.id.videoId);
         setVideos(videoIds);
       } catch (err) {
-        console.error('Failed to fetch YouTube videos:', err);
+        console.error("Failed to fetch YouTube videos:", err);
       }
     };
 
     if (content && content[0] && content[0].content) {
-      const query = content[0].content.split(' ').slice(0, 20).join(' ');
+      const query = content[0].content.split(" ").slice(0, 20).join(" ");
       fetchYouTubeVideos(query);
     }
   }, [content]);
@@ -76,7 +76,6 @@ const JsonContentPage: React.FC = () => {
     );
   }
 
-
   if (!content || content.length === 0) {
     return <div className="text-gray-500">No content found</div>;
   }
@@ -87,22 +86,42 @@ const JsonContentPage: React.FC = () => {
         <div>
           <MarkdownPreview
             source={content[0].content}
-            style={{ padding: 16, fontSize: '19px', color: 'white', background: 'black' }}
+            style={{
+              padding: 16,
+              fontSize: "19px",
+              color: "white",
+              background: "black",
+            }}
           />
         </div>
       </div>
-      
-      <div className='mt-10 '>
-      <h2 className="text-xl font-bold text-white mb-4">Related Videos</h2>
-      <div className="grid grid-cols-2 gap-8">
-        {videos.map((videoId) => (
-          <YouTube key={videoId} videoId={videoId} opts={{ width: '100%', height: '390' }} />
-        ))}
+
+      <div className="mt-10 ">
+        <h2 className="text-xl font-bold text-white mb-4">Related Videos</h2>
+        <div className="grid grid-cols-2 gap-8">
+          {videos.map((videoId) => (
+            <YouTube
+              key={videoId}
+              videoId={videoId}
+              opts={{ width: "100%", height: "390" }}
+            />
+          ))}
+        </div>
+        <div className="flex mt-4">
+          <button
+            onClick={() => router.back()}
+            className="text-gray-500 hover:text-gray-300"
+          >
+            Go Back
+          </button>
+          <button
+            onClick={() => alert("Checkout your knowledge!")}
+            className="ml-4 text-gray-500 hover:text-gray-300"
+          >
+            Checkout Your Knowledge
+          </button>
+        </div>
       </div>
-      <button onClick={() => router.back()} className="mt-4 text-gray-500 hover:text-gray-300">
-        Go Back
-      </button>
-    </div>
     </div>
   );
 };
