@@ -8,24 +8,27 @@ export async function POST(req: NextRequest) {
   const url = new URL(req.url);
   const contentId = parseInt(url.pathname.split("/").pop());
 
-  if (!contentId) {
-    return NextResponse.json(
-      { message: "Undefined contentId" },
-      { status: 400 }
-    );
+  if (isNaN(contentId)) {
+    return NextResponse.json({ message: "Invalid contentId" }, { status: 400 });
+  }
+
+  const existingQuiz = await prisma.quiz.findFirst({
+    where: { ContentId: contentId },
+  });
+
+  if (existingQuiz) {
+    return NextResponse.json({ quiz: existingQuiz }, { status: 200 });
   }
 
   const content = await prisma.content.findFirst({
-    where: {
-      id: contentId,
-    },
+    where: { id: contentId },
   });
 
   if (!content) {
     return NextResponse.json({ message: "Content not found" }, { status: 404 });
   }
 
-  const prompt = `You are an AI assistant tasked with creating multiple quiz entries on content: ${content.content}. Please generate 10 quiz entries with the following criteria:
+  const prompt = `You are an AI assistant tasked with creating multiple quiz entries on content: ${content.content}. Please generate 10 quiz entries in json format with the following criteria:
   1. 4 tough questions
   2. 2 medium questions
   3. 4 easy questions
@@ -34,32 +37,79 @@ export async function POST(req: NextRequest) {
   1. Question: A well-formed question appropriate for the difficulty level.
   2. Options: A JSON array of possible answers, including both correct and incorrect options.
   3. Correct Answer: The correct answer that corresponds to one of the options.
-  4. Time Started: The timestamp for when the quiz should start (in ISO 8601 format).
-  5. Time Ended: The timestamp for when the quiz should end (in ISO 8601 format).
-  6. Content ID: An integer representing the ID of the associated content.
-  7. Completed: A boolean indicating whether the quiz is completed.`;
+  7. Completed: A boolean indicating whether the quiz is completed.
+  8. Send me only what I asked for
+  9. data should be in this format {
+    "id": 1,
+    "ContentId": 1,
+    "quizcontent": [
+      {
+        "options": [
+          "op1",
+          "op2",
+          "op3",
+          "op4"
+        ],
+        "question": "What is the time complexity of an algorithm that performs a binary search on a sorted array?",
+        "completed": true,
+        "correct_answer": "O(log n)"
+      },
+    ]
+  }`;
 
-  const completion = await openai.chat.completions.create({
-    messages: [
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: prompt },
-    ],
-    model: "gpt-4o",
+  try {
+    const completion = await openai.chat.completions.create({
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: prompt },
+      ],
+      model: "gpt-4o",
+    });
+
+    const responseContent = completion.choices[0].message.content;
+    const jsonString = responseContent.substring(
+      responseContent.indexOf("["),
+      responseContent.lastIndexOf("]") + 1
+    );
+    const quizzes = JSON.parse(jsonString);
+
+    const createdQuiz = await prisma.quiz.create({
+      data: {
+        quizcontent: quizzes,
+        ContentId: contentId,
+      },
+    });
+
+    return NextResponse.json({ quiz: createdQuiz });
+  } catch (error) {
+    console.error("Error generating or parsing quizzes:", error);
+    return NextResponse.json(
+      { message: "Error generating or parsing quizzes" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { contentId: string } }
+) {
+  const contentId = parseInt(params.contentId);
+
+  if (isNaN(contentId)) {
+    return NextResponse.json({ message: "Invalid contentId" }, { status: 400 });
+  }
+
+  const quiz = await prisma.quiz.findFirst({
+    where: { ContentId: contentId },
   });
 
-  const quizzes = JSON.parse(completion.choices[0].message.content);
+  if (!quiz) {
+    return NextResponse.json(
+      { message: "No quizzes found for this contentId" },
+      { status: 404 }
+    );
+  }
 
-  const createdQuizzes = await prisma.quiz.createMany({
-    data: quizzes.map((quiz: any) => ({
-      question: quiz.question,
-      options: quiz.options,
-      correct: quiz.correct,
-      timeStarted: new Date(quiz.timeStarted),
-      timeEnded: new Date(quiz.timeEnded),
-      ContentId: quiz.ContentId,
-      Completed: quiz.Completed,
-    })),
-  });
-
-  return NextResponse.json({ quizzes: createdQuizzes });
+  return NextResponse.json(quiz, { status: 200 });
 }

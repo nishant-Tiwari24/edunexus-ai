@@ -8,15 +8,15 @@ datasource db {
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
-  email     String     @unique
+  id        Int               @id @default(autoincrement())
+  email     String            @unique
   password  String
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
   responses ChatGptResponse[]
+
   @@index([id])
 }
-
 
 model ChatGptResponse {
   id           Int           @id @default(autoincrement())
@@ -25,47 +25,46 @@ model ChatGptResponse {
   userId       Int
   user         User          @relation(fields: [userId], references: [id])
   jsonContents JsonContent[]
+
   @@index([userId])
 }
 
 model JsonContent {
-  id          Int           @id @default(autoincrement())
-  key         String
-  value       String
-  responseId  Int
-  response    ChatGptResponse @relation(fields: [responseId], references: [id])
-  subtopics Subtopics[]
+  key        String
+  value      String
+  responseId Int
+  id         Int             @id @default(autoincrement())
+  response   ChatGptResponse @relation(fields: [responseId], references: [id])
+  subtopics  Subtopics[]
+
   @@index([responseId])
 }
 
-
 model Subtopics {
-  id        Int @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   titles    String
   JsonId    Int
+  contents  Content[]
   subtopics JsonContent @relation(fields: [JsonId], references: [id])
-  contents Content[]
+
   @@index([JsonId])
 }
 
 model Content {
-  id         Int @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   content    String
   SubtopicId Int
   subtopic   Subtopics @relation(fields: [SubtopicId], references: [id])
-  quizess Quiz[]
+  quizess    Quiz[]
+
   @@index([SubtopicId])
 }
 
 model Quiz {
-  id          Int       @id @default(autoincrement())
-  question    String
-  options     Json
-  correct     String
-  timeStarted DateTime  
-  timeEnded   DateTime  
-  ContentId  Int
-  Completed   Boolean
-  content    Content @relation(fields: [ContentId], references: [id])
+  id          Int     @id @default(autoincrement())
+  ContentId   Int
+  quizcontent Json
+  content     Content @relation(fields: [ContentId], references: [id])
+
   @@index([ContentId])
 }

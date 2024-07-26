@@ -9,6 +9,7 @@ import YouTube from "react-youtube";
 interface ContentItem {
   SubtopicId: string;
   content: string;
+  id: string;
 }
 
 const JsonContentPage: React.FC = () => {
@@ -20,7 +21,9 @@ const JsonContentPage: React.FC = () => {
   const router = useRouter();
   const key = process.env.YOUTUBE;
   const subtopicId = params.content;
-
+  const responses = params.responses;
+  const json = params.jsoncontent;
+  console.log(responses);
   console.log("subtopicId:", subtopicId);
 
   useEffect(() => {
@@ -66,7 +69,7 @@ const JsonContentPage: React.FC = () => {
       const query = content[0].content.split(" ").slice(0, 20).join(" ");
       fetchYouTubeVideos(query);
     }
-  }, [content]);
+  }, [content, key]);
 
   if (error) {
     return (
@@ -76,8 +79,17 @@ const JsonContentPage: React.FC = () => {
     );
   }
 
+  if (error) {
+    return <div className="text-gray-500">{error}</div>;
+  }
+
   if (!content || content.length === 0) {
     return <div className="text-gray-500">No content found</div>;
+  }
+
+  function handleQuiz(contentId: string) {
+    router.push(`/roadmap/${responses}/${json}/${subtopicId}/${contentId}`);
+    axios.post(`/api/quiz/${contentId}`);
   }
 
   return (
@@ -115,7 +127,7 @@ const JsonContentPage: React.FC = () => {
             Go Back
           </button>
           <button
-            onClick={() => alert("Checkout your knowledge!")}
+            onClick={() => handleQuiz(content[0].id)}
             className="ml-4 text-gray-500 hover:text-gray-300"
           >
             Checkout Your Knowledge
