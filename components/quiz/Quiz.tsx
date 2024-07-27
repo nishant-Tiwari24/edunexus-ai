@@ -12,7 +12,8 @@ import quiz3 from "@/public/quiz/quiz3.jpeg";
 import quiz4 from "@/public/quiz/quiz4.jpeg";
 import quiz5 from "@/public/quiz/quiz5.jpeg";
 import quiz6 from "@/public/quiz/quiz6.jpeg";
-import { useParams } from "next/navigation";
+import OpenAI from "openai";
+import { useParams, useRouter } from "next/navigation";
 
 const quizImages = [quiz1, quiz2, quiz3, quiz4, quiz5, quiz6];
 
@@ -22,6 +23,11 @@ interface QuizQuestion {
   correct_answer: string;
   completed: boolean;
 }
+
+const openai = new OpenAI({
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
+});
 
 interface QuizData {
   id: number;
@@ -38,7 +44,12 @@ const Quiz: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [randomImage, setRandomImage] = useState(quizImages[0]);
+  const [incorrectQuestions, setIncorrectQuestions] = useState<QuizQuestion[]>(
+    []
+  );
+  const [generatingRevision, setGeneratingRevision] = useState(false);
   const router = useParams();
+  const router1 = useRouter();
   const ContentId = router.quizId;
 
   useEffect(() => {
@@ -74,6 +85,11 @@ const Quiz: React.FC = () => {
     setSelectedOption(option);
     if (option === quizQuestions[currentQuestionIndex].correct_answer) {
       setScore(score + 1);
+    } else {
+      setIncorrectQuestions([
+        ...incorrectQuestions,
+        quizQuestions[currentQuestionIndex],
+      ]);
     }
   };
 
@@ -86,9 +102,53 @@ const Quiz: React.FC = () => {
     }
   };
 
+  const generateRevisionContent = async () => {
+    const prompt = `
+  You are a knowledgeable tutor. Based on the following incorrect quiz questions and answers, generate detailed revision notes. For each question, provide explanations, clarify why the provided answer is correct in detailed manner with examples and codes , and highlight any common misconceptions.
+
+  Here are the questions and correct answers:
+
+  ${incorrectQuestions
+    .map(
+      (question, index) =>
+        `### Question ${index + 1}
+    
+    **Q:** ${question.question}
+    
+    **Correct Answer:** ${question.correct_answer}`
+    )
+    .join("\n\n")}
+
+  Provide detailed explanations and notes for each question in colourful Markdown format .
+  `;
+
+    try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+          { role: "system", content: "You are a knowledgeable tutor." },
+          { role: "user", content: prompt },
+        ],
+      });
+
+      const aiContent = completion.choices[0].message.content;
+
+      let markdownContent = "# Revision Content\n\n";
+      markdownContent += `## Incorrect Questions and Explanations\n\n`;
+      markdownContent += aiContent;
+
+      return markdownContent;
+    } catch (error) {
+      console.error("Error generating revision content:", error);
+      return "# Revision Content\n\nError generating content.";
+    }
+  };
+
   if (loading) {
     return (
-      <div className="flex w-[100vw] h-[100vh] items-center justify-center"></div>
+      <div className="flex w-[100vw] h-[100vh] items-center justify-center">
+        <QuizLoader />
+      </div>
     );
   }
 
@@ -100,8 +160,36 @@ const Quiz: React.FC = () => {
     );
   }
 
+  const responseId = router.responses;
+  const jsoncontentId = router.jsoncontent;
   if (showResult) {
-    return <Result score={score} totalQuestions={quizQuestions.length} />;
+    const handleRevision = async () => {
+      setGeneratingRevision(true);
+      const revisionContent = await generateRevisionContent();
+      localStorage.setItem("revisionContent", revisionContent); // Save the revision content to localStorage
+      setGeneratingRevision(false);
+      router1.push(`/roadmap/${responseId}/${jsoncontentId}/revision`); // Navigate to the revision route
+    };
+
+    return (
+      <>
+        {generatingRevision ? (
+          <div className="flex min-h-screen items-center justify-center">
+            <QuizLoader />
+          </div>
+        ) : (
+          <Result
+            score={score}
+            totalQuestions={quizQuestions.length}
+            incorrectQuestions={incorrectQuestions.map((question) => ({
+              question: question.question,
+              correct_answer: question.correct_answer,
+            }))}
+            onHandleRevision={handleRevision}
+          />
+        )}
+      </>
+    );
   }
 
   return (
@@ -141,7 +229,9 @@ const Quiz: React.FC = () => {
             onClick={handleNextQuestion}
             className="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded-lg"
           >
-            Next
+            {currentQuestionIndex === quizQuestions.length - 1
+              ? "Finish Quiz"
+              : "Next Question"}
           </button>
         </div>
       </div>
