@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import QuizImage from "./QuizImage";
 import Question from "./Question";
+import { QuizLoader } from "./Loader";
 import Options from "./Options";
 import ProgressBar from "./ProgressBar";
 import Result from "./Result";
@@ -34,6 +35,8 @@ const Quiz: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [randomImage, setRandomImage] = useState(quizImages[0]);
   const router = useParams();
   const ContentId = router.quizId;
@@ -42,16 +45,25 @@ const Quiz: React.FC = () => {
     const fetchQuizData = async () => {
       try {
         const response = await fetch(`/api/quiz/${ContentId}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data: QuizData = await response.json();
         setQuizQuestions(data.quizcontent);
       } catch (error) {
         console.error("Error fetching quiz data:", error);
+        setError(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 10000);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchQuizData();
     setRandomImage(getRandomImage());
-  }, []);
+  }, [ContentId]);
 
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * quizImages.length);
@@ -74,18 +86,22 @@ const Quiz: React.FC = () => {
     }
   };
 
-  if (showResult) {
-    return <Result score={score} totalQuestions={quizQuestions.length} />;
+  if (loading) {
+    return (
+      <div className="flex w-[100vw] h-[100vh] items-center justify-center"></div>
+    );
   }
 
-  if (quizQuestions.length === 0) {
+  if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-white p-4">
-        <div className=" p-6 rounded-lg shadow-md w-full max-w-3xl text-center">
-          <h2 className="text-2xl font-bold mb-4">Loading Quiz...</h2>
-        </div>
+      <div className="flex min-h-screen items-center justify-center">
+        <QuizLoader />
       </div>
     );
+  }
+
+  if (showResult) {
+    return <Result score={score} totalQuestions={quizQuestions.length} />;
   }
 
   return (
