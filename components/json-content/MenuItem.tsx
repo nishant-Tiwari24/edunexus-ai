@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { IconType } from 'react-icons';
+import React, { useState } from "react";
+import { IconType } from "react-icons";
 
 interface MenuItemProps {
   icon: IconType;
@@ -8,33 +8,50 @@ interface MenuItemProps {
   onClick: () => void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ onClick, icon: Icon, text, isOpen }) => {
+const MenuItem: React.FC<MenuItemProps> = ({
+  onClick,
+  icon: Icon,
+  text,
+  isOpen,
+}) => {
   const [checked, setChecked] = useState(false);
+  const [active, setActive] = useState(false); // Added for active state
 
   const handleCheckboxClick = () => {
     setChecked(!checked);
   };
 
+  const handleItemClick = () => {
+    setActive(!active); // Toggle active state
+    onClick(); // Trigger the onClick function passed as a prop
+  };
+
   return (
-    <div className='flex justify-between'>
     <div
-      onClick={onClick}
-      className="flex items-center justify-between space-x-4 p-2 rounded-lg transition-colors duration-300 cursor-pointer px-6"
+      className={`flex items-center justify-between h-[42px] px-4 py-2 ${
+        active ? "bg-white text-black" : "bg-black text-gray-400"
+      } rounded-lg transition-colors duration-300 cursor-pointer`}
     >
-      {isOpen && (
-        <span className={`text-gray-400 text-base hover:text-white ${checked ? 'line-through' : ''}`}>
-          {text}
-        </span>
-      )}
-    </div>
-    <div className='w-[20px] h-[20px]'>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={handleCheckboxClick}
-        className="form-checkbox  text-green-500 w-[20px] h-[20px]"
-      />
-    </div>
+      <div
+        onClick={handleItemClick} // Update to use the new handler
+        className="flex items-center space-x-4 w-full"
+      >
+        {isOpen && (
+          <span
+            className={`text-base ${checked ? "line-through" : ""} flex-grow`}
+          >
+            {text}
+          </span>
+        )}
+        <div className="flex-shrink-0">
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={handleCheckboxClick}
+            className="form-checkbox text-green-500"
+          />
+        </div>
+      </div>
     </div>
   );
 };

@@ -104,8 +104,8 @@ const Quiz: React.FC = () => {
 
   const generateRevisionContent = async () => {
     const prompt = `
-  You are a knowledgeable tutor. Based on the following incorrect quiz questions and answers, generate detailed revision notes. For each question, provide explanations, clarify why the provided answer is correct in detailed manner with examples and codes , and highlight any common misconceptions.
-
+  You are a knowledgeable tutor. Based on the following incorrect quiz questions and answers, generate detailed revision notes. For each question, provide explanations, clarify why the provided answer is correct in detailed manner with examples and codes , and highlight any common misconceptions, codes and etc.
+  Dont generate per question in markdown i want whole response in Markdown
   Here are the questions and correct answers:
 
   ${incorrectQuestions
@@ -119,7 +119,7 @@ const Quiz: React.FC = () => {
     )
     .join("\n\n")}
 
-  Provide detailed explanations and notes for each question in colourful Markdown format .
+  Provide detailed explanations and notes for each question in Markdown format .
   `;
 
     try {

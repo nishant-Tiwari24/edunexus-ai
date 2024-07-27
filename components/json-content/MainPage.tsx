@@ -73,14 +73,8 @@ const JsonContentPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="flex w-[100vw] h-[100vh] items-center justify-center">
-        <Loading />
-      </div>
+      <div className="flex w-[100vw] h-[100vh] items-center justify-center flex-col"></div>
     );
-  }
-
-  if (error) {
-    return <div className="text-gray-500">{error}</div>;
   }
 
   if (!content || content.length === 0) {
@@ -100,7 +94,7 @@ const JsonContentPage: React.FC = () => {
             source={content[0].content}
             style={{
               padding: 16,
-              fontSize: "19px",
+              fontSize: "16px",
               color: "white",
               background: "black",
             }}

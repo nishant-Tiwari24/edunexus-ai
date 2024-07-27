@@ -38,20 +38,12 @@ const Sidebar: React.FC = () => {
 
   const handleMenuItemClick = async (subtopicId: number) => {
     try {
-      router.push(`/roadmap/${responseId}/${jsonContentId}/${subtopicId}`);
       await axios.post(`/api/content/${subtopicId}`);
+      router.push(`/roadmap/${responseId}/${jsonContentId}/${subtopicId}`);
     } catch (err) {
       setError("Failed to generate content");
     }
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
 
   return (
     <div

@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Content not found" }, { status: 404 });
   }
 
-  const prompt = `You are an AI assistant tasked with creating multiple quiz entries on content: ${content.content}. Please generate 10 quiz entries in json format with the following criteria:
+  const prompt = `You are an AI assistant tasked with creating multiple quiz entries on content: ${content.content}. Please generate 10 quiz entries in json format with the following criteria, Dont send anything else in response:
   1. 4 tough questions
   2. 2 medium questions
   3. 4 easy questions
@@ -40,8 +40,6 @@ export async function POST(req: NextRequest) {
   7. Completed: A boolean indicating whether the quiz is completed.
   8. Send me only what I asked for
   9. data should be in this format {
-    "id": 1,
-    "ContentId": 1,
     "quizcontent": [
       {
         "options": [
