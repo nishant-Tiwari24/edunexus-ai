@@ -16,12 +16,7 @@ const Revision: React.FC = () => {
     <div className="min-h-screen p-4">
       <MarkdownPreview
         source={revisionContent}
-        style={{
-          padding: 16,
-          fontSize: "16px",
-          color: "white",
-          background: "black",
-        }}
+        className="font-light text-white-100  bg-zinc-900 text-xl"
       />
     </div>
   );
