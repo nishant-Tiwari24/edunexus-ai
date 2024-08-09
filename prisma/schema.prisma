@@ -51,20 +51,30 @@ model Subtopics {
 }
 
 model Content {
-  id         Int       @id @default(autoincrement())
-  content    String
-  SubtopicId Int
-  subtopic   Subtopics @relation(fields: [SubtopicId], references: [id])
-  quizess    Quiz[]
+  id            Int            @id @default(autoincrement())
+  content       String
+  SubtopicId    Int
+  subtopic      Subtopics      @relation(fields: [SubtopicId], references: [id])
+  quizzes       Quiz[]
+  megaQuestions MegaQuestions[]
 
   @@index([SubtopicId])
 }
 
 model Quiz {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   ContentId   Int
   quizcontent Json
-  content     Content @relation(fields: [ContentId], references: [id])
+  content     Content  @relation(fields: [ContentId], references: [id])
 
+  @@index([ContentId])
+}
+
+model MegaQuestions {
+  id              String   @id @default(uuid())
+  ContentId       Int
+  megaAssessment  Json[]
+  content         Content  @relation(fields: [ContentId], references: [id])
+  
   @@index([ContentId])
 }

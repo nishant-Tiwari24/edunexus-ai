@@ -84,7 +84,7 @@ const JsonContentPage: React.FC = () => {
               q: query,
               num: 10,
               key: "",
-              cx: "",
+              cx: "c70db5151c8de4e95",
             },
           }
         );
@@ -112,7 +112,7 @@ const JsonContentPage: React.FC = () => {
               num: 4,
               searchType: "image",
               key: "",
-              cx: "",
+              cx: "c70db5151c8de4e95",
             },
           }
         );
@@ -176,6 +176,13 @@ const JsonContentPage: React.FC = () => {
     axios.post(`/api/quiz/${contentId}`);
   }
 
+  function handleAssessments(contentId: string) {
+    router.push(
+      `/roadmap/${responses}/${json}/${subtopicId}/${contentId}/megaassessments`
+    );
+    axios.post(`/api/megaquestions/${contentId}`);
+  }
+
   return (
     <div className="bg-black p-10 border-zinc-600 max-w-7xl">
       <div className="rounded-md text-zinc-200 relative overflow-hidden">
@@ -220,19 +227,39 @@ const JsonContentPage: React.FC = () => {
         </ul>
       </div>
 
-      <div className="flex mt-4">
-        <button
-          onClick={() => router.back()}
-          className="text-gray-500 hover:text-gray-300"
-        >
-          Go Back
-        </button>
-        <button
-          onClick={() => handleQuiz(content[0].id)}
-          className="ml-4 text-gray-500 hover:text-gray-300"
-        >
-          Checkout Your Knowledge
-        </button>
+      <div className="flex flex-col mt-10 space-y-1">
+        <div className="text-2xl mb-6 font-semibold text-white">
+          <p>
+            🕹️ You're almost there! Complete these levels to reach the next
+            milestone.
+          </p>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={() => router.back()}
+            className="text-white hover:text-zinc-300 bg-zinc-800 border-[1px] border-zinc-700 px-4 py-2 rounded-lg transition-transform transform hover:scale-105 hover:bg-zinc-700 flex items-center space-x-2"
+          >
+            <span className="text-lg">🔙</span>
+            <span>Go Back</span>
+          </button>
+
+          <button
+            onClick={() => handleQuiz(content[0].id)}
+            className="text-white hover:text-zinc-300 bg-zinc-800 border-[1px] border-zinc-700 px-4 py-2 rounded-lg transition-transform transform hover:scale-105 hover:bg-zinc-700 flex items-center space-x-2"
+          >
+            <span className="text-lg">🎯</span>
+            <span>Checkout Your Knowledge</span>
+          </button>
+
+          <button
+            onClick={() => handleAssessments(content[0].id)}
+            className="text-white hover:text-zinc-300 bg-zinc-800 border-[1px] border-zinc-700 px-4 py-2 rounded-lg transition-transform transform hover:scale-105 hover:bg-zinc-700 flex items-center space-x-2"
+          >
+            <span className="text-lg">🧠</span>
+            <span>Mega Assessments</span>
+          </button>
+        </div>
       </div>
     </div>
   );
