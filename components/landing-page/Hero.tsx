@@ -32,12 +32,13 @@ const Hero = () => {
           <div className="flex space-x-4 mb-4">
             <MagicButton
               title="Register Now"
-              handleClick={() => route.push('/signup')}
+              handleClick={() => route.push("/signup")}
               icon={<FaArrowRight />}
               position="right"
             />
             <MagicButton
-              title="Learn More"
+              title="Generate a Roadmap"
+              handleClick={() => route.push("/roadmap")}
               icon={<FaLocationArrow />}
               position="right"
             />

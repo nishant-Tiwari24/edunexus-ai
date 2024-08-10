@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function POST(req: NextRequest) {
   const url = new URL(req.url);
-  const subtopicId = parseInt(url.pathname.split('/').pop() || '');
+  const subtopicId = parseInt(url.pathname.split("/").pop() || "");
 
   if (isNaN(subtopicId)) {
-    return NextResponse.json({ message: 'Invalid subtopic ID' }, { status: 400 });
+    return NextResponse.json(
+      { message: "Invalid subtopic ID" },
+      { status: 400 }
+    );
   }
 
   try {
@@ -20,7 +23,10 @@ export async function POST(req: NextRequest) {
     });
 
     if (!subtopic) {
-      return NextResponse.json({ message: 'Subtopic not found' }, { status: 404 });
+      return NextResponse.json(
+        { message: "Subtopic not found" },
+        { status: 404 }
+      );
     }
 
     const existingContent = await prisma.content.findFirst({
@@ -29,8 +35,11 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    if (existingContent && existingContent.content.trim() !== '') {
-      return NextResponse.json({ message: 'Content already exists' }, { status: 200 });
+    if (existingContent && existingContent.content.trim() !== "") {
+      return NextResponse.json(
+        { message: "Content already exists" },
+        { status: 200 }
+      );
     }
 
     const prompt = `You are an expert on ${subtopic.titles}. Your job is to teach the given sub-topic: ${subtopic.titles} in extreme detail.
@@ -42,7 +51,7 @@ export async function POST(req: NextRequest) {
     const completion = await openai.chat.completions.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
-        { role: "user", content: prompt }
+        { role: "user", content: prompt },
       ],
       model: "gpt-4o",
     });
@@ -56,14 +65,23 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({ message: 'Content generated and saved successfully' }, { status: 201 });
+    return NextResponse.json(
+      { message: "Content generated and saved successfully" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Unable to generate or save content' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Unable to generate or save content" },
+      { status: 500 }
+    );
   }
 }
 
-export async function GET(req: NextRequest, { params }: { params: { subtopicId: string } }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { subtopicId: string } }
+) {
   const subtopicId = parseInt(params.subtopicId);
 
   try {
@@ -74,12 +92,18 @@ export async function GET(req: NextRequest, { params }: { params: { subtopicId: 
     });
 
     if (content.length === 0) {
-      return NextResponse.json({ message: 'No content found for this subtopic' }, { status: 404 });
+      return NextResponse.json(
+        { message: "No content found for this subtopic" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json(content, { status: 200 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Unable to fetch content' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Unable to fetch content" },
+      { status: 500 }
+    );
   }
 }

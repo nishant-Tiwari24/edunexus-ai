@@ -90,7 +90,7 @@ const RoadmapPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-[url('/bg.avif')] bg-center bg-cover bg-opacity-25 p-36 border-zinc-600">
+    <div className="bg-black bg-center bg-cover bg-opacity-25 p-36 border-zinc-600">
       <h2 className="text-xl text-center text-gray-500 font-medium mb-2">
         Roadmap Details
       </h2>
