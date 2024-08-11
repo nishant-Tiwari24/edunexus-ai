@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <div
-      className={`relative flex flex-col bg-gradient-to-br from-black to-zinc-800 min-h-screen border-r-2 border-zinc-800 overflow-y-scroll  h-full ${
+      className={`fixed flex flex-col bg-gradient-to-br from-black to-zinc-800 min-h-screen border-r-2 border-zinc-800 overflow-y-scroll  h-full ${
         isOpen ? "w-96" : "w-20"
       } transition-width duration-300 ease-in-out`}
     >

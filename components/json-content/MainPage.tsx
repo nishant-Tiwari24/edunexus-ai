@@ -27,7 +27,6 @@ const JsonContentPage: React.FC = () => {
   const responses = params.responses;
   const json = params.jsoncontent;
   console.log(responses);
-  console.log("subtopicId:", subtopicId);
 
   useEffect(() => {
     const fetchContent = async () => {

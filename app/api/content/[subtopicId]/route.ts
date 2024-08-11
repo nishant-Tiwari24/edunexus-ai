@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt },
       ],
-      model: "gpt-4o",
+      model: "gpt-4",
     });
 
     const contentText = completion.choices[0].message.content.trim();
@@ -83,6 +83,13 @@ export async function GET(
   { params }: { params: { subtopicId: string } }
 ) {
   const subtopicId = parseInt(params.subtopicId);
+
+  if (isNaN(subtopicId)) {
+    return NextResponse.json(
+      { message: "Invalid subtopic ID" },
+      { status: 400 }
+    );
+  }
 
   try {
     const content = await prisma.content.findMany({
