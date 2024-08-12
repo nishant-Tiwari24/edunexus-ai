@@ -1,10 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
-import OpenAI from 'openai';
+import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
+import OpenAI from "openai";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-export async function POST(req: NextRequest, { params }: { params: { jsonContentId: string } }) {
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { jsonContentId: string } }
+) {
   const jsonContentId = parseInt(params.jsonContentId);
 
   try {
@@ -15,7 +18,10 @@ export async function POST(req: NextRequest, { params }: { params: { jsonContent
     });
 
     if (existingSubtopics.length > 0) {
-      return NextResponse.json({ message: 'Subtopics already exist for this JsonContent' }, { status: 200 });
+      return NextResponse.json(
+        { message: "Subtopics already exist for this JsonContent" },
+        { status: 200 }
+      );
     }
 
     const jsonContent = await prisma.jsonContent.findUnique({
@@ -25,7 +31,10 @@ export async function POST(req: NextRequest, { params }: { params: { jsonContent
     });
 
     if (!jsonContent) {
-      return NextResponse.json({ message: 'JsonContent not found' }, { status: 404 });
+      return NextResponse.json(
+        { message: "JsonContent not found" },
+        { status: 404 }
+      );
     }
 
     const main = jsonContent.value;
@@ -34,15 +43,17 @@ export async function POST(req: NextRequest, { params }: { params: { jsonContent
     const completion = await openai.chat.completions.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
-        { role: "user", content: prompt }
+        { role: "user", content: prompt },
       ],
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
     });
 
     const subtopicsText = completion.choices[0].message.content.trim();
-    const subtopicsTitles = subtopicsText.split('\n').filter(line => line.length > 0);
+    const subtopicsTitles = subtopicsText
+      .split("\n")
+      .filter((line) => line.length > 0);
 
-    const subtopicPromises = subtopicsTitles.map(title =>
+    const subtopicPromises = subtopicsTitles.map((title) =>
       prisma.subtopics.create({
         data: {
           titles: title,
@@ -52,14 +63,23 @@ export async function POST(req: NextRequest, { params }: { params: { jsonContent
     );
     await Promise.all(subtopicPromises);
 
-    return NextResponse.json({ message: 'Subtopics generated and saved successfully' }, { status: 201 });
+    return NextResponse.json(
+      { message: "Subtopics generated and saved successfully" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Unable to generate or save subtopics' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Unable to generate or save subtopics" },
+      { status: 500 }
+    );
   }
 }
 
-export async function GET(req: NextRequest, { params }: { params: { jsonContentId: string } }) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { jsonContentId: string } }
+) {
   const jsonContentId = parseInt(params.jsonContentId);
 
   try {
@@ -73,12 +93,18 @@ export async function GET(req: NextRequest, { params }: { params: { jsonContentI
     });
 
     if (!jsonContent) {
-      return NextResponse.json({ message: 'JsonContent not found' }, { status: 404 });
+      return NextResponse.json(
+        { message: "JsonContent not found" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json(jsonContent, { status: 200 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Unable to fetch JsonContent' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Unable to fetch JsonContent" },
+      { status: 500 }
+    );
   }
 }

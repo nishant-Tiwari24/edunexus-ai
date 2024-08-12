@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt },
       ],
-      model: "gpt-4",
+      model: "gpt-4o-mini",
     });
 
     const contentText = completion.choices[0].message.content.trim();
