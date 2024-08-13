@@ -11,7 +11,7 @@ const Hero = () => {
       <div></div>
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover opacity-40 bg-center z-0"
-        style={{ backgroundImage: "url(/landing-page/bg.png)" }}
+        style={{ backgroundImage: "url(/landing-page/bg (2).png)" }}
       ></div>
 
       <div className="flex justify-center relative my-20 z-10">

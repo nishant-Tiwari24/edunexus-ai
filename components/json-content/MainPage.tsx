@@ -56,7 +56,7 @@ const JsonContentPage: React.FC = () => {
               q: query,
               type: "video",
               videoDuration: "long",
-              key: "",
+              key: "AIzaSyB4ykPOOqLE0fMIBfF42JZxlC6Td_RpFHs",
             },
           }
         );
@@ -82,7 +82,7 @@ const JsonContentPage: React.FC = () => {
             params: {
               q: query,
               num: 10,
-              key: "",
+              key: "AIzaSyB4ykPOOqLE0fMIBfF42JZxlC6Td_RpFHs",
               cx: "c70db5151c8de4e95",
             },
           }
@@ -110,7 +110,7 @@ const JsonContentPage: React.FC = () => {
               q: query,
               num: 4,
               searchType: "image",
-              key: "",
+              key: "AIzaSyB4ykPOOqLE0fMIBfF42JZxlC6Td_RpFHs",
               cx: "c70db5151c8de4e95",
             },
           }
