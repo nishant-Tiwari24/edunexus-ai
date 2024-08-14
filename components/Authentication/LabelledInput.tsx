@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface LabelledInputProps {
   id: string;
@@ -8,9 +8,18 @@ interface LabelledInputProps {
   label: string;
 }
 
-const LabelledInput: React.FC<LabelledInputProps> = ({ id, type, value, onChange, label }) => (
+const LabelledInput: React.FC<LabelledInputProps> = ({
+  id,
+  type,
+  value,
+  onChange,
+  label,
+}) => (
   <div className="mb-4">
-    <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-1">
+    <label
+      htmlFor={id}
+      className="block text-sm font-medium text-gray-300 mb-1"
+    >
       {label}
     </label>
     <input

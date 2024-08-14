@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Loading from "../content/Loading";
 import Error from "./Error";

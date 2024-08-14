@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ResultProps {
   score: number;
   totalQuestions: number;

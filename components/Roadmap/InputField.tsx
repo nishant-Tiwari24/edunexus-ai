@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface InputFieldProps {
   label: string;
@@ -8,10 +8,18 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, id, name, value, onChange }) => {
+const InputField: React.FC<InputFieldProps> = ({
+  label,
+  id,
+  name,
+  value,
+  onChange,
+}) => {
   return (
     <div className="mb-4">
-      <label htmlFor={id} className="block text-zinc-200 font-medium mb-1">{label}:</label>
+      <label htmlFor={id} className="block text-zinc-200 font-medium mb-1">
+        {label}:
+      </label>
       <textarea
         id={id}
         name={name}

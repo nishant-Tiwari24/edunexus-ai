@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import prisma from "@/lib/prisma";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const { email, password } = await req.json();
     console.log("Received data:", { email, password });
@@ -19,5 +19,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "User already exists" }, { status: 500 });
   }
 }
-
-//n cors app.use(cors()) app.use(express.json())

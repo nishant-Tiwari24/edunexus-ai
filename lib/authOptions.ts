@@ -1,17 +1,17 @@
 import prisma from "@/lib/prisma";
-import CredentialsProvider from 'next-auth/providers/credentials';
+import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import { NextAuthOptions, User } from "next-auth";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: "Testron",
       credentials: {
-        username: { label: 'email', type: 'text', placeholder: '' },
-        password: { label: 'password', type: 'password', placeholder: '' },
+        username: { label: "email", type: "text", placeholder: "" },
+        password: { label: "password", type: "password", placeholder: "" },
       },
-      //@ts-ignore
-      async authorize(credentials: any) {
+      async authorize(credentials: any): Promise<User | null> {
         if (!credentials?.username || !credentials.password) {
           console.error("Credentials are undefined");
           return null;
@@ -26,7 +26,10 @@ export const authOptions = {
           return null;
         }
 
-        const isValidPassword = await bcrypt.compare(credentials.password, user.password);
+        const isValidPassword = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
 
         if (!isValidPassword) {
           console.error("Invalid password");
@@ -34,7 +37,7 @@ export const authOptions = {
         }
 
         console.log("User ID:", user.id);
-        return { id: user.id, email: user.email };
+        return { id: String(user.id), email: user.email };
       },
     }),
   ],

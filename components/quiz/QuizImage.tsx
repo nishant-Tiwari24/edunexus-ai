@@ -1,4 +1,3 @@
-import React from "react";
 import Image, { StaticImageData } from "next/image";
 import quiz1 from "@/public/quiz/quiz1.jpeg";
 import quiz2 from "@/public/quiz/quiz2.jpeg";

@@ -1,8 +1,8 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const History: React.FC = () => {
   const [responses, setResponses] = useState([]);
@@ -13,13 +13,13 @@ const History: React.FC = () => {
   useEffect(() => {
     const fetchResponses = async () => {
       try {
-        const response = await axios.get('/api/responses');
+        const response = await axios.get("/api/responses");
         setResponses(response.data);
         console.log(response.data);
-        toast.success('Responses loaded successfully!');
+        toast.success("Responses loaded successfully!");
       } catch (error) {
-        setError('Failed to fetch responses');
-        toast.error('Failed to fetch responses');
+        setError("Failed to fetch responses");
+        toast.error("Failed to fetch responses");
       } finally {
         setLoading(false);
         toast.dismiss();
@@ -47,8 +47,12 @@ const History: React.FC = () => {
   return (
     <div className="bg-black p-4 border-zinc-600 h-[720px] border-2 overflow-y-scroll rounded-2xl">
       <Toaster />
-      <h2 className="text-zinc-200  text-xl text-center font-medium mb-2">History of Roadmap Generated</h2>
-      {loading ? renderLoading() : (
+      <h2 className="text-zinc-200  text-xl text-center font-medium mb-2">
+        History of Roadmap Generated
+      </h2>
+      {loading ? (
+        renderLoading()
+      ) : (
         <div className="space-y-2">
           {responses.map((response) => (
             <div

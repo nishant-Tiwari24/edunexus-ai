@@ -1,5 +1,3 @@
-import React from "react";
-
 interface RoadmapBoxProps {
   id: string;
   keyText: string;

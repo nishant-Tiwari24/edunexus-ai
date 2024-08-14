@@ -62,7 +62,6 @@ const Quiz: React.FC = () => {
         const data: QuizData = await response.json();
         setQuizQuestions(data.quizcontent);
       } catch (error) {
-        console.error("Error fetching quiz data:", error);
         setError(true);
         setTimeout(() => {
           window.location.reload();
@@ -75,6 +74,8 @@ const Quiz: React.FC = () => {
     fetchQuizData();
     setRandomImage(getRandomImage());
   }, [ContentId]);
+
+  // random image generation
 
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * quizImages.length);
@@ -93,6 +94,7 @@ const Quiz: React.FC = () => {
     }
   };
 
+  // navigator
   const handleNextQuestion = () => {
     setSelectedOption(null);
     if (currentQuestionIndex < quizQuestions.length - 1) {
@@ -102,6 +104,8 @@ const Quiz: React.FC = () => {
     }
   };
 
+  // revision bot
+  // TODO: optimization of revision bot
   const generateRevisionContent = async () => {
     const prompt = `
   You are a knowledgeable tutor. Based on the following incorrect quiz questions and answers, generate detailed revision notes. For each question, provide explanations, clarify why the provided answer is correct in detailed manner with examples and codes , and highlight any common misconceptions, codes and etc.
@@ -166,9 +170,9 @@ const Quiz: React.FC = () => {
     const handleRevision = async () => {
       setGeneratingRevision(true);
       const revisionContent = await generateRevisionContent();
-      localStorage.setItem("revisionContent", revisionContent); // Save the revision content to localStorage
+      localStorage.setItem("revisionContent", revisionContent); // storing revision content to localStorage
       setGeneratingRevision(false);
-      router1.push(`/roadmap/${responseId}/${jsoncontentId}/revision`); // Navigate to the revision route
+      router1.push(`/roadmap/${responseId}/${jsoncontentId}/revision`); // navigate to the revision route
     };
 
     return (
