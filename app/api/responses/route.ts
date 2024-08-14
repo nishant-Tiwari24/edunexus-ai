@@ -2,43 +2,24 @@ import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "@/lib/authOptions";
-import OpenAI from "openai";
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-interface Roadmap {
-  title: string;
-  data: Record<string, string>;
-}
-
-export async function POST(req: NextRequest, res: NextResponse) {
+import { generateRoadmap } from "@/lib/response-bot";
+//post
+export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return NextResponse.json({ message: "User unauthorized" });
+    return NextResponse.json({ message: "User unauthorized" }, { status: 401 });
   }
 
-  const { syllabus, learningObj, refResources, prerequisites, duration } =
-    await req.json();
-
-  const prompt = `Generate a roadmap to learn the given subject, based on the information given below. The response should be structured into a JSON format with two keys: 'title' and 'data'. The 'title' key should have a value that is a detailed title generated for the roadmap. The 'data' key should contain a JSON object where the key is the name of the main topic and the value is a single string of subtopics under that main topic. Do not use any punctuation or markdown. The roadmap should be in the correct order and generate a minimum of 12 key-value pairs for data.
-
-  Syllabus: ${syllabus || "N/A"}
-  Learning Objectives: ${learningObj || "N/A"}
-  Reference Resources: ${refResources || "N/A"}
-  Prerequisites: ${prerequisites || "N/A"}
-  Duration: ${duration || "N/A"}`;
-
   try {
-    const completion = await openai.chat.completions.create({
-      messages: [
-        { role: "system", content: "You are a helpful assistant." },
-        { role: "user", content: prompt },
-      ],
-      model: "gpt-4o-mini",
-    });
+    const { syllabus, learningObj, refResources, prerequisites, duration } =
+      await req.json();
 
-    const roadmap: Roadmap = JSON.parse(
-      completion.choices[0]?.message?.content
+    const roadmap = await generateRoadmap(
+      syllabus,
+      learningObj,
+      refResources,
+      prerequisites,
+      duration
     );
 
     const savedResponse = await prisma.chatGptResponse.create({
@@ -48,12 +29,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
       },
     });
 
-    const jsonContentPromises = Object.entries(roadmap.data).map(
+    const jsonContentPromises = Object.entries(roadmap.data || {}).map(
       ([key, value]) => {
         return prisma.jsonContent.create({
           data: {
             key,
-            value,
+            value: String(value),
             responseId: savedResponse.id,
           },
         });
@@ -64,15 +45,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     return NextResponse.json(savedResponse, { status: 201 });
   } catch (error) {
-    console.error(error);
+    console.error("Error in POST /api/roadmap:", error);
     return NextResponse.json(
       { error: "Unable to generate and save response" },
       { status: 500 }
     );
   }
 }
-
-export async function GET(req: NextRequest, res: NextResponse) {
+//get
+export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -118,7 +99,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json(responses, { status: 200 });
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error in GET /api/roadmap:", error);
     return NextResponse.json(
       { error: "Unable to fetch responses" },
       { status: 500 }

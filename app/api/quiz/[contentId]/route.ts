@@ -4,6 +4,8 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+//post
+//TODO: code optimization
 export async function POST(req: NextRequest) {
   const url = new URL(req.url);
   const contentId = parseInt(url.pathname.split("/").pop());
@@ -27,7 +29,7 @@ export async function POST(req: NextRequest) {
   if (!content) {
     return NextResponse.json({ message: "Content not found" }, { status: 404 });
   }
-
+  // quiz generation bot prompt
   const prompt = `You are an AI assistant tasked with creating multiple quiz entries on content: ${content.content}. Please generate 10 quiz entries in json format with the following criteria, Dont send anything else in response:
   1. 4 tough questions
   2. 2 medium questions
@@ -87,7 +89,7 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
+// get method
 export async function GET(
   req: NextRequest,
   { params }: { params: { contentId: string } }

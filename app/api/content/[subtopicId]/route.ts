@@ -1,9 +1,54 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import OpenAI from "openai";
+import { generateContent } from "@/lib/content-bot";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+interface Subtopic {
+  id: number;
+  titles: string;
+}
 
+interface Content {
+  id: number;
+  SubtopicId: number;
+  content: string;
+}
+
+// to get subtopic by ID
+const getSubtopicById = async (
+  subtopicId: number
+): Promise<Subtopic | null> => {
+  return await prisma.subtopics.findUnique({
+    where: {
+      id: subtopicId,
+    },
+  });
+};
+
+// to get content by subtopic ID
+const getContentBySubtopicId = async (
+  subtopicId: number
+): Promise<Content | null> => {
+  return await prisma.content.findFirst({
+    where: {
+      SubtopicId: subtopicId,
+    },
+  });
+};
+
+// to create content
+const createContent = async (
+  subtopicId: number,
+  contentText: string
+): Promise<Content> => {
+  return await prisma.content.create({
+    data: {
+      SubtopicId: subtopicId,
+      content: contentText,
+    },
+  });
+};
+
+// POST
 export async function POST(req: NextRequest) {
   const url = new URL(req.url);
   const subtopicId = parseInt(url.pathname.split("/").pop() || "");
@@ -16,11 +61,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const subtopic = await prisma.subtopics.findUnique({
-      where: {
-        id: subtopicId,
-      },
-    });
+    const subtopic = await getSubtopicById(subtopicId);
 
     if (!subtopic) {
       return NextResponse.json(
@@ -29,11 +70,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const existingContent = await prisma.content.findFirst({
-      where: {
-        SubtopicId: subtopicId,
-      },
-    });
+    const existingContent = await getContentBySubtopicId(subtopicId);
 
     if (existingContent && existingContent.content.trim() !== "") {
       return NextResponse.json(
@@ -42,28 +79,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const prompt = `You are an expert on ${subtopic.titles}. Your job is to teach the given sub-topic: ${subtopic.titles} in extreme detail.
-    1. Use an explanation that is elaborate and detailed but easy to understand.
-    2. Use examples to explain the concept.
-    3. If it is related to code, then include a code snippet to explain the concept.
-    4. Start with an introduction paragraph, then go ahead with the explanation and end with a conclusion paragraph.`;
+    const contentText = await generateContent(subtopic.titles);
 
-    const completion = await openai.chat.completions.create({
-      messages: [
-        { role: "system", content: "You are a helpful assistant." },
-        { role: "user", content: prompt },
-      ],
-      model: "gpt-4o-mini",
-    });
-
-    const contentText = completion.choices[0].message.content.trim();
-
-    await prisma.content.create({
-      data: {
-        SubtopicId: subtopicId,
-        content: contentText,
-      },
-    });
+    await createContent(subtopicId, contentText);
 
     return NextResponse.json(
       { message: "Content generated and saved successfully" },
@@ -78,6 +96,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// GET
 export async function GET(
   req: NextRequest,
   { params }: { params: { subtopicId: string } }

@@ -56,7 +56,7 @@ const JsonContentPage: React.FC = () => {
               q: query,
               type: "video",
               videoDuration: "long",
-              key: "AIzaSyB4ykPOOqLE0fMIBfF42JZxlC6Td_RpFHs",
+              key: "AIzaSyDGn-TG6eHy8VxYybyrIJzfELP2E5XHjmo",
             },
           }
         );
@@ -176,10 +176,10 @@ const JsonContentPage: React.FC = () => {
   }
 
   function handleAssessments(contentId: string) {
+    axios.post(`/api/megaquestions/${contentId}`);
     router.push(
       `/roadmap/${responses}/${json}/${subtopicId}/${contentId}/megaassessments`
     );
-    axios.post(`/api/megaquestions/${contentId}`);
   }
 
   return (
