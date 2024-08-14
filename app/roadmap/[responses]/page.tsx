@@ -1,4 +1,4 @@
-import RoadmapPage from "@/components/Responses/Response";
+import RoadmapPage from "@/components/responses/Response";
 import Footer from "@/components/landing-page/Footer";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
