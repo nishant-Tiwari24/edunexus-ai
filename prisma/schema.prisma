@@ -75,6 +75,5 @@ model MegaQuestions {
   ContentId       Int
   megaAssessment  Json[]
   content         Content  @relation(fields: [ContentId], references: [id])
-  
   @@index([ContentId])
 }

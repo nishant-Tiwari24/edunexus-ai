@@ -19,9 +19,6 @@ export const generateContent = async (subtopicTitle: string) => {
     model: "gpt-4o-mini",
     temperature: 0.7,
     max_tokens: 1500,
-    top_p: 1.0,
-    frequency_penalty: 0.5,
-    presence_penalty: 0.0,
   });
 
   return completion.choices[0].message.content.trim();

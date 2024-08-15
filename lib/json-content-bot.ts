@@ -13,9 +13,6 @@ export const generateSubtopics = async (main: string): Promise<string[]> => {
     model: "gpt-4o-mini",
     temperature: 0.7,
     max_tokens: 150,
-    top_p: 0.9,
-    frequency_penalty: 0,
-    presence_penalty: 0,
   });
 
   return completion.choices[0].message.content

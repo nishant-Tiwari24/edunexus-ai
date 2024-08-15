@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -8,8 +8,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { signIn, useSession, signOut } from 'next-auth/react'
-import Cookies from 'js-cookie';
+import { signIn, useSession, signOut } from "next-auth/react";
 
 export const FloatingNav = ({
   navItems,
@@ -49,6 +48,7 @@ export const FloatingNav = ({
       // Retrieve the token from the session object
       // @ts-ignore
       const userToken = session.user.token;
+      console.log(userToken);
       setToken(userToken ? JSON.stringify(userToken) : "No token found");
     }
   };

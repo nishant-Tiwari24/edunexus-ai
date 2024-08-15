@@ -8,7 +8,7 @@ export async function generateMegaQuestionsPrompt(
   const prompt = `You are an AI assistant tasked with creating a set of mega long questions for content: "${content}". 
   Please generate questions based on the following criteria and format:
   1. Key Concepts: Important concepts that this content covers in detail.
-  2. Hints: Provide clues or hints for each question .
+  2. Hints: Provide clues or hints for each question.
   3. Correct Answers: Include correct answers for each question in detail 100 words.
   4. Common Mistakes: List common mistakes students might make in detail 100 words.
   5. The JSON format should be as follows:

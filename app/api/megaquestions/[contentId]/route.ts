@@ -52,11 +52,12 @@ export async function POST(req: NextRequest) {
 
     const createdMegaQuestions = await prisma.megaQuestions.create({
       data: {
-        megaAssessment,
+        megaAssessment: megaAssessment,
         ContentId: contentId,
       },
     });
-    console.log({ megaQuestions: createdMegaQuestions });
+
+    console.log({ megaQuestions: JSON.stringify(createdMegaQuestions) });
     return NextResponse.json({ megaQuestions: createdMegaQuestions });
   } catch (error) {
     console.error("Error generating or parsing mega questions:", error);

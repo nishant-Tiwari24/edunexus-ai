@@ -1,40 +1,48 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useCallback } from "react";
 import { useSession, signOut } from "next-auth/react";
 import useClickOutside from "@/app/hooks/userclicksoutside";
 import { useRouter } from "next/navigation";
 
-const menuItems = [
+interface MenuItem {
+  name: string;
+  route: string;
+}
+
+const menuItems: MenuItem[] = [
   { name: "Profile", route: "/profile" },
   { name: "Settings", route: "/settings" },
   { name: "Dashboard", route: "/dashboard" },
   { name: "Support", route: "/support" },
   { name: "Help", route: "/help" },
-  { name: "Feedback", route: "/feedback" },
 ];
 
 const UserComponent: React.FC = () => {
   const { data: session } = useSession();
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
   const router = useRouter();
 
-  const toggleDropdown = () => {
-    setIsDropdownVisible(!isDropdownVisible);
-  };
+  const toggleDropdown = useCallback(() => {
+    setIsDropdownVisible((prev) => !prev);
+  }, []);
 
-  const handleCloseDropdown = () => {
+  const handleCloseDropdown = useCallback(() => {
     setIsDropdownVisible(false);
-  };
+  }, []);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     signOut();
     router.push("/");
-  };
+  }, [router]);
 
-  const handleNavigation = (route: string) => {
-    router.push(route);
-    setIsDropdownVisible(false);
-  };
+  const handleNavigation = useCallback(
+    (route: string) => {
+      router.push(route);
+      setIsDropdownVisible(false);
+    },
+    [router]
+  );
 
   const dropdownRef = useClickOutside(handleCloseDropdown);
 
@@ -50,13 +58,13 @@ const UserComponent: React.FC = () => {
           className="absolute right-0 mt-2 w-48 top-8 bg-zinc-800 rounded-md shadow-lg z-50"
         >
           <ul className="py-1 text-white">
-            {menuItems.map((item, index) => (
+            {menuItems.map(({ name, route }) => (
               <li
-                key={index}
+                key={name}
                 className="px-4 py-2 hover:bg-green-600 cursor-pointer"
-                onClick={() => handleNavigation(item.route)}
+                onClick={() => handleNavigation(route)}
               >
-                {item.name}
+                {name}
               </li>
             ))}
             <li

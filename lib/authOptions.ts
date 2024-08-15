@@ -37,7 +37,8 @@ export const authOptions: NextAuthOptions = {
         }
 
         console.log("User ID:", user.id);
-        return { id: String(user.id), email: user.email };
+        //@ts-ignore
+        return { id: user.id, email: user.email };
       },
     }),
   ],
