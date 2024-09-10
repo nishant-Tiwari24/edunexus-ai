@@ -178,7 +178,7 @@ const JsonContentPage: React.FC = () => {
   function handleAssessments(contentId: string) {
     axios.post(`/api/megaquestions/${contentId}`);
     router.push(
-      `/roadmap/${responses}/${json}/${subtopicId}/${contentId}/megaassessments`
+      `/roadmap/${responses}/${json}/${subtopicId}/16/megaassessments`
     );
   }
 
